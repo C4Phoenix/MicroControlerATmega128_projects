@@ -28,13 +28,40 @@
 /*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
+
+#define F_CPU 8000000
+
 #include <asf.h>
+#include <util/delay.h>
+
+void wait(int);
 
 int main (void)
 {
 	/* Insert system clock initialization code here (sysclk_init()). */
 
-	board_init();
+	board_init();//does nothing but O well
 
 	/* Insert application code here, after the board has been initialized. */
+	DDRD = 0b11111111;
+	
+	
+	while (1)
+	{
+		PORTD = 0b10000000;
+		if(PINC == 0b00000001){
+			PORTD ^= (PORTD ^ 0b11000000) & PINC;
+		} else {
+			PORTD = 0b00000000;
+		}
+		wait(250);
+	}
+}
+
+void wait(int ms)
+{
+	for (int i =0; i < ms; i++)
+	{
+		_delay_ms(1);
+	}
 }
