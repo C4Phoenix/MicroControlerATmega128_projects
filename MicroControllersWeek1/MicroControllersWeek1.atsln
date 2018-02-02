@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "BlinkingLightsWithButton", "BlinkingLightsWithButton\BlinkingLightsWithButton.cproj", "{E1F2223E-591A-47F1-ACB8-B6E6B4E841C1}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "MovingLight", "MovingLight\MovingLight.cproj", "{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "paternAnimation", "paternAnimation\paternAnimation.cproj", "{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LedBlinkSpeedChangerButton", "LedBlinkSpeedChangerButton\LedBlinkSpeedChangerButton.cproj", "{0D3029AE-018A-4685-8D4A-237FDD82A655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +27,18 @@ Global
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
-		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Debug|AVR.ActiveCfg = Debug|AVR
-		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Debug|AVR.Build.0 = Debug|AVR
-		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Release|AVR.ActiveCfg = Release|AVR
-		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Release|AVR.Build.0 = Release|AVR
 		{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}.Debug|AVR.ActiveCfg = Debug|AVR
 		{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}.Debug|AVR.Build.0 = Debug|AVR
 		{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}.Release|AVR.ActiveCfg = Release|AVR
 		{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}.Release|AVR.Build.0 = Release|AVR
+		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Debug|AVR.ActiveCfg = Debug|AVR
+		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Debug|AVR.Build.0 = Debug|AVR
+		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Release|AVR.ActiveCfg = Release|AVR
+		{B63A1D70-BA7A-43D6-83DD-3D2104DB69E8}.Release|AVR.Build.0 = Release|AVR
+		{0D3029AE-018A-4685-8D4A-237FDD82A655}.Debug|AVR.ActiveCfg = Debug|AVR
+		{0D3029AE-018A-4685-8D4A-237FDD82A655}.Debug|AVR.Build.0 = Debug|AVR
+		{0D3029AE-018A-4685-8D4A-237FDD82A655}.Release|AVR.ActiveCfg = Release|AVR
+		{0D3029AE-018A-4685-8D4A-237FDD82A655}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
