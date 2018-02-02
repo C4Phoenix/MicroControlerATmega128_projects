@@ -9,8 +9,6 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "BlinkingLights", "BlinkingL
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "MovingLight", "MovingLight\MovingLight.cproj", "{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LedBlinkSpeedChangerButton", "LedBlinkSpeedChangerButton\LedBlinkSpeedChangerButton.cproj", "{CE3C6ED6-849B-48A3-86D9-A5D18CF957C5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -29,10 +27,6 @@ Global
 		{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}.Debug|AVR.Build.0 = Debug|AVR
 		{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}.Release|AVR.ActiveCfg = Release|AVR
 		{B8E69915-D7A5-4AF3-AFE1-EA17EC833014}.Release|AVR.Build.0 = Release|AVR
-		{CE3C6ED6-849B-48A3-86D9-A5D18CF957C5}.Debug|AVR.ActiveCfg = Debug|AVR
-		{CE3C6ED6-849B-48A3-86D9-A5D18CF957C5}.Debug|AVR.Build.0 = Debug|AVR
-		{CE3C6ED6-849B-48A3-86D9-A5D18CF957C5}.Release|AVR.ActiveCfg = Release|AVR
-		{CE3C6ED6-849B-48A3-86D9-A5D18CF957C5}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

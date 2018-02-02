@@ -5,7 +5,7 @@
 **
 ** main.c
 **
-** Beschrijving:	Creates a moving led on the board
+** Beschrijving:	Switches between bit 6 and bit 7
 ** Target:			AVR mcu
 ** Build:			avr-gcc -std=c99 -Wall -O3 -mmcu=atmega128 -D F_CPU=8000000UL -c switch.c
 **					avr-gcc -g -mmcu=atmega128 -o switch.elf switch.o
