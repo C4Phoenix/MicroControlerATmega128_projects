@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{e1f2223e-591a-47f1-acb8-b6e6b4e841c1}</ProjectGuid>
     <avrdevice>ATmega128</avrdevice>
     <avrdeviceseries>mega</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>week1B3</AssemblyName>
-    <Name>week1B3</Name>
-    <RootNamespace>week1B3</RootNamespace>
+    <AssemblyName>BlinkingLightsWithButton</AssemblyName>
+    <Name>BlinkingLightsWithButton</Name>
+    <RootNamespace>BlinkingLightsWithButton</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
