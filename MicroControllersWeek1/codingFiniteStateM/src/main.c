@@ -54,7 +54,6 @@ Version :    	DMK, Initial code
 	}
 }
 
-
 typedef void *(*StateFunc)();
 
 //states
@@ -66,32 +65,55 @@ void *end();
 
 void *s1()
 {
+	PORTA = 0b00000010;
 	
+	if(PIND & (1<<PD5)){ return s2;}
+	if(PIND & (1<<PD7)){ return start;}
+	return s1;
 }
 
 void *s2()
 {
+	PORTA = 0b00000100;
 	
+	if(PIND & (1<<PD5)){ return s3;}
+	if(PIND & (1<<PD6)){ return s1;}
+	if(PIND & (1<<PD7)){ return start;}
+	return s2;
 }
 
 void *s3()
 {
+	PORTA = 0b00001000;
 	
+	if(PIND & (1<<PD5)){ return end;}
+	if(PIND & (1<<PD6)){ return end;}
+	if(PIND & (1<<PD7)){ return start;}
+	return s3;
 }
 
 void *start()
 {
+	PORTA = 0b00000001;
 	
+	if(PIND & (1<<PD5)){ return s2;}
+	if(PIND & (1<<PD6)){ return s1;}
+	return start;
 }
 
 void *end()
 {
+	PORTA = 0b11100000;
 	
+	if(PIND & (1<<PD7)){ return start;}
+	return end;
 }
 
 int main (void)
 {
 	StateFunc statefunc = start;
+	DDRD = 0b00000000;
+	DDRA = 0b11111111;
 	
 	while(1)
 	{
