@@ -5,7 +5,7 @@
 **
 ** main.c
 **
-** Beschrijving:	Creates a moving led on the board
+** Beschrijving:	Switches between bit 6 and bit 7
 ** Target:			AVR mcu
 ** Build:			avr-gcc -std=c99 -Wall -O3 -mmcu=atmega128 -D F_CPU=8000000UL -c switch.c
 **					avr-gcc -g -mmcu=atmega128 -o switch.elf switch.o
@@ -19,7 +19,10 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+typedef enum{NORMAL,FAST} ENUM_STATE;
+
 void wait( int ms );
+int HandleState(ENUM_STATE state);
 
 
 void wait( int ms )
@@ -41,14 +44,34 @@ Version :    	DMK, Initial code
 
 /******************************************************************/
 int main( void ){
-	int i = 0;
-	DDRD = 0b11111111;	
-	PORTD = BIT(0);
+	ENUM_STATE state = NORMAL;
+	DDRD = 0b11111111;
+	DDRC = 0b00000000;	
+	PORTD = BIT(7);
 	while (1)
 	{	
-		PORTD = BIT(i%8);
-		i++;
-		wait(50);
+		if((PINC & (1<<PC0))){
+			switch(state)
+			{
+				case FAST: 
+					state = NORMAL; 
+					break;
+				case NORMAL: 
+					state = FAST;
+					break;
+			}
+		}
+		PORTD ^= (BIT(7) | 0);
+		wait(HandleState(state));
 	}
 	return 1;
+}
+
+int HandleState(ENUM_STATE state){
+	switch(state)
+	{
+		case FAST: return 125;
+		case NORMAL:  return 500;
+	}
+	return 50;
 }
