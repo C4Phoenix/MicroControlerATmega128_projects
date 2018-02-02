@@ -28,10 +28,11 @@
 /*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
+#define F_CPU 8000000
+
 #include <asf.h>
 #include <util/delay.h>
 
-#define F_CPU 8000000
 
 void wait( int ms );
 
