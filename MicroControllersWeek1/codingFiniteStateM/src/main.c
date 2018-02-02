@@ -55,7 +55,47 @@ Version :    	DMK, Initial code
 }
 
 
-int main (void)
+typedef void *(*StateFunc)();
+
+//states
+void *s1();
+void *s2();
+void *s3();
+void *start();
+void *end();
+
+void *s1()
 {
 	
+}
+
+void *s2()
+{
+	
+}
+
+void *s3()
+{
+	
+}
+
+void *start()
+{
+	
+}
+
+void *end()
+{
+	
+}
+
+int main (void)
+{
+	StateFunc statefunc = start;
+	
+	while(1)
+	{
+		statefunc = (StateFunc) (*statefunc)();
+		wait(100);
+	}
 }
