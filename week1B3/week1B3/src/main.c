@@ -44,14 +44,16 @@ int main (void)
 
 	/* Insert application code here, after the board has been initialized. */
 	DDRD = 0b11111111;
-	
+	bool needsinit = true;
 	
 	while (1)
 	{
-		PORTD = 0b10000000;
 		if(PINC == 0b00000001){
+			if (needsinit) PORTD = 0b10000000; 
+			needsinit = false;
 			PORTD ^= (PORTD ^ 0b11000000) & PINC;
 		} else {
+			needsinit = true;
 			PORTD = 0b00000000;
 		}
 		wait(250);
