@@ -1,7 +1,7 @@
 /**
  * \file
  *
- * \brief User board configuration template
+ * \brief ATmega128 on STK600 board configuration template
  *
  */
 /*
