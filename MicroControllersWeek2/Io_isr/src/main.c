@@ -14,6 +14,7 @@
 ** Author: 			dkroeske@gmail.com
 ** -------------------------------------------------------------------------*/
 
+#define F_CPU 8000000
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -80,7 +81,6 @@ Version :    	DMK, Initial code
 	// Init Interrupt hardware
 	EICRA |= 0x0B;			// INT1 falling edge, INT0 rising edge
 	EIMSK |= 0x03;			// Enable INT1 & INT0
-	
 	// Enable global interrupt system
 	//SREG = 0x80;			// Of direct via SREG of via wrapper
 	sei();				
