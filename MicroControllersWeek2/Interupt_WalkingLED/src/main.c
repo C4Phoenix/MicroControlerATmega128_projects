@@ -21,7 +21,7 @@
 /*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
-#define F_CPU 8000000
+#define F_CPU 800000
 
 #include <asf.h>
 #include <util/delay.h>
@@ -33,13 +33,13 @@ void moveLight(void);
 int main (void)
 {
 	//Init io controls
-	DDRA = 0b11110000;
+	DDRD = 0x00;//make two buttons input
 	
-	DDRD = 0b11111111;
-	PORTD= 0x01;// set the first bit in the "walking" chain
+	DDRC = 0b11111111;//set everyone to output
+	PORTC= 0b00000001;// set the first bit in the "walking" chain
 	
 	//init interupt
-	EICRA |= 0x0B;// 0b1011
+	EICRA |= 0x3C;// 0b1011
 	EIMSK |= 0x06;// 0b0110
 	
 	
@@ -50,18 +50,19 @@ int main (void)
 	while(1)
 	{
 		//empty while loop to make the main spin for nothing
-		wait(100);
+		//wait(100);
+		//moveLight();
 	}	
 }
 
 void moveLight(void)//move light by one step
 {
-	if (PORTD == 0b10000000)//if last bit is set
+	if (PORTC == 0b10000000)//if last bit is set
 	{
-		PORTD = 0b00000001;//start over again
+		PORTC = 0b00000001;//start over again
 		return;
 	}
-	PORTD <<= 1;//shift the bit by one also the light
+	PORTC <<= 1;//shift the bit by one also the light
 }
 
 ISR( INT1_vect)//interupt no 1
@@ -73,6 +74,7 @@ ISR( INT2_vect)//interupt no2
 {
 	moveLight(); //move light one step
 }
+
 /******************************************************************/
 void wait( int ms )
 /* 
