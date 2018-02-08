@@ -246,9 +246,6 @@
     <None Include="src\ASF\mega\utils\preprocessor\tpaste.h">
       <SubType>compile</SubType>
     </None>
-    <Compile Include="src\Ioisr.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\main.c">
       <SubType>compile</SubType>
     </Compile>
