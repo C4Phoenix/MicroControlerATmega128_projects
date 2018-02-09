@@ -18,26 +18,26 @@
 #include <avr/io.h>
 #include <util/delay.h>
 void wait( int ms );
+void display(int digit);
 
-typedef struct { 
-	unsigned char data;
-	unsigned int delay ;
-} PATTERN_STRUCT; 
-
-// 7 seg
-// PORTD dp G F E D C B A
-//        y y y y x x x x
-
-PATTERN_STRUCT pattern[] = { 
-	{0x80, 150}, {0x00, 150}, 
-	{0x80, 150}, {0x00, 150},
-	{0x01, 150}, {0x02, 150}, {0x40, 150}, {0x20, 150},
-	{0x01, 150}, {0x02, 150}, {0x40, 150}, {0x20, 150},
-	{0x00, 150},
-	{0x01, 150}, {0x03, 150}, {0x43, 150}, {0x63, 150},	
-	{0x01, 150}, {0x03, 150}, {0x43, 150}, {0x63, 150},
-	{0x00, 150},
-	{0xFF, 0}
+int lookup[] = {
+  //0b0gfedcba
+	0b00111111,//0
+	0b00000110,//1
+	0b01011011,//2
+	0b01001111,//3
+	0b01100110,//4
+	0b01101101,//5
+	0b01111101,//6
+	0b00000111,//7
+	0b01111111,//8
+	0b01101111,//9
+	0b01110111,//a
+	0b01111100,//b
+	0b00111001,//c
+	0b01011110,//d
+	0b01111001,//e
+	0b01110001,//f
 };
 
 /******************************************************************/
@@ -66,25 +66,31 @@ short:			main() loop, entry point of executable
 inputs:			
 outputs:	
 notes:			
-Version :    	DMK, Initial code
+Version :    	Robin Hobbel, Initial code
 *******************************************************************/
 {
-	DDRD = 0b11111111;					// PORTD all output 
-	
-	while (1==1)
+	DDRD = 0b11111111;	// PORTD all output 
+	DDRC = 0b00000000;	//PORTC all input
+	display(5);
+	while (1)
 	{
-		// Set index to begin of pattern array
-		int index = 0;
-		// as long as delay has meaningful content
-		while( pattern[index].delay != 0 ) {
-			// Write data to PORTD	
-			PORTD = pattern[index].data;
-			// wait
-			wait(pattern[index].delay);
-			// increment for next round
-			index++;
-		}
+		
 	}
-
 	return 1;
+}
+/******************************************************************/
+void display(int digit){
+/*
+short:			display(), displays a digit hexadecimal on the seven segment display
+inputs:
+outputs:
+notes:
+Version :    	Robin Hobbel, Initial code
+*******************************************************************/
+	if(0 <= digit && digit <=15){
+		PORTD = lookup[digit];
+	} else {
+		PORTD = lookup[14];
+	}
+	
 }
