@@ -83,20 +83,23 @@ Version :    	Robin Hobbel, Initial code
 	int currentNumber = 0;
 	DDRC = 0b11111111;	// PORTD all output 
 	DDRD = 0b00000000;	//PORTC all input
-	EICRA |= 0x3C;// 0b1011
-	EIMSK |= 0x06;// 0b0110
+	EICRA |= 0x3C;
+	EIMSK |= 0x06;
 	sei();
 	while (1)
 	{
 		wait(250);
 		if(button1Pressed && button2Pressed){
+		//sets everything to zero when both buttons are pressed
 			currentNumber=0;
 			button1Pressed=0;
 			button2Pressed=0;
 		} else if (button1Pressed){
+		//count up
 			currentNumber++;
 			button1Pressed=0;
 		} else if (button2Pressed){
+		//count down
 			currentNumber--;
 			button2Pressed=0;
 		}
@@ -107,9 +110,9 @@ Version :    	Robin Hobbel, Initial code
 /******************************************************************/
 void display(int digit){
 /*
-short:			display(), displays a digit hexadecimal on the seven segment display
-inputs:
-outputs:
+short:			display(), displays a digit hexadecimal on the seven segment display by getting the requerd bits from a list
+inputs:			int
+outputs:		
 notes:
 Version :    	Robin Hobbel, Initial code
 *******************************************************************/
