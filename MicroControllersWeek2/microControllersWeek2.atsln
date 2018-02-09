@@ -9,6 +9,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Interupt_WalkingLED", "Inte
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SevenSegment", "SevenSegment\SevenSegment.cproj", "{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SevenSegmentPattern", "SevenSegmentPattern\SevenSegmentPattern.cproj", "{9F651073-CF45-4E0B-AF78-A9017D3D405C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -27,6 +29,10 @@ Global
 		{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}.Debug|AVR.Build.0 = Debug|AVR
 		{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}.Release|AVR.ActiveCfg = Release|AVR
 		{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}.Release|AVR.Build.0 = Release|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Debug|AVR.Build.0 = Debug|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Release|AVR.ActiveCfg = Release|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
