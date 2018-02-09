@@ -66,20 +66,14 @@ Version :    	DMK, Initial code
 *******************************************************************/
 {
 	DDRD = 0b11111111;					// PORTD all output 
-	
+	int frame = 0;
+	int animationLenth = 8;
 	while (1==1)
 	{
-		// Set index to begin of pattern array
-		int index = 0;
-		// as long as delay has meaningful content
-		while( pattern[index].delay != 0 ) {
-			// Write data to PORTD	
-			PORTD = pattern[index].data;
-			// wait
-			wait(pattern[index].delay);
-			// increment for next round
-			index++;
-		}
+		frame++;
+		frame %= animationLenth;
+		PORTD = pattern[frame].data;
+		wait(pattern[frame].delay);
 	}
 
 	return 1;
