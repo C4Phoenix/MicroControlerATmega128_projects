@@ -17,6 +17,7 @@
 #define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 void wait( int ms );
 void display(int digit);
 
@@ -39,6 +40,7 @@ int lookup[] = {
 	0b01111001,//e
 	0b01110001,//f
 };
+int currentNumber = 0;
 
 /******************************************************************/
 void wait( int ms )
@@ -58,8 +60,17 @@ Version :    	DMK, Initial code
 	}
 }
 
+ISR( INT1_vect)//interupt no 1
+{
+	currentNumber = currentNumber+1;
+	display(currentNumber);
+}
 
-/******************************************************************/
+ISR( INT2_vect)//interupt no2
+{
+	currentNumber = currentNumber-1;
+	display(currentNumber);
+}
 int main( void )
 /* 
 short:			main() loop, entry point of executable
@@ -69,12 +80,17 @@ notes:
 Version :    	Robin Hobbel, Initial code
 *******************************************************************/
 {
-	DDRD = 0b11111111;	// PORTD all output 
-	DDRC = 0b00000000;	//PORTC all input
-	display(5);
+	DDRC = 0b11111111;	// PORTD all output 
+	DDRD = 0b00000000;	//PORTC all input
+	EICRA |= 0x3C;// 0b1011
+	EIMSK |= 0x06;// 0b0110
+	display(currentNumber);
+	sei();
 	while (1)
 	{
-		
+		//if(PINC & 0x80){
+		//	currentNumber = currentNumber+1;
+		//}
 	}
 	return 1;
 }
@@ -88,9 +104,11 @@ notes:
 Version :    	Robin Hobbel, Initial code
 *******************************************************************/
 	if(0 <= digit && digit <=15){
-		PORTD = lookup[digit];
+		PORTC = lookup[digit];
 	} else {
-		PORTD = lookup[14];
+		PORTC = lookup[14];
 	}
 	
 }
+
+
