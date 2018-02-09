@@ -3,7 +3,7 @@
 ** support, and with no warranty, express or implied, as to its usefulness for
 ** any purpose.
 **
-** lookup.c
+** main.c
 **
 ** Beschrijving:	Ledpatroon op PORTD dmv table lookup (scheiding logica en data)    
 ** Target:			AVR mcu
@@ -11,7 +11,7 @@
 **					avr-gcc -g -mmcu=atmega128 -o lookup.elf lookup.o
 **					avr-objcopy -O ihex lookup.elf lookup.hex 
 **					or type 'make'
-** Author: 			dkroeske@gmail.com
+** Author: 			Robin Hobbel & Jacco Steegman
 ** -------------------------------------------------------------------------*/
 
 #define F_CPU 8000000
@@ -40,7 +40,9 @@ int lookup[] = {
 	0b01111001,//e
 	0b01110001,//f
 };
-int currentNumber = 0;
+int button1Pressed = 0;//0 = button not pressed, 1 = button pressed
+int button2Pressed = 0;//0 = button not pressed, 1 = button pressed
+
 
 /******************************************************************/
 void wait( int ms )
@@ -62,14 +64,12 @@ Version :    	DMK, Initial code
 
 ISR( INT1_vect)//interupt no 1
 {
-	currentNumber = currentNumber+1;
-	display(currentNumber);
+	button1Pressed = 1;
 }
 
-ISR( INT2_vect)//interupt no2
+ISR( INT2_vect)//interupt no 2
 {
-	currentNumber = currentNumber-1;
-	display(currentNumber);
+	button2Pressed = 1;	
 }
 int main( void )
 /* 
@@ -80,17 +80,27 @@ notes:
 Version :    	Robin Hobbel, Initial code
 *******************************************************************/
 {
+	int currentNumber = 0;
 	DDRC = 0b11111111;	// PORTD all output 
 	DDRD = 0b00000000;	//PORTC all input
 	EICRA |= 0x3C;// 0b1011
 	EIMSK |= 0x06;// 0b0110
-	display(currentNumber);
 	sei();
 	while (1)
 	{
-		//if(PINC & 0x80){
-		//	currentNumber = currentNumber+1;
-		//}
+		wait(250);
+		if(button1Pressed && button2Pressed){
+			currentNumber=0;
+			button1Pressed=0;
+			button2Pressed=0;
+		} else if (button1Pressed){
+			currentNumber++;
+			button1Pressed=0;
+		} else if (button2Pressed){
+			currentNumber--;
+			button2Pressed=0;
+		}
+		display(currentNumber);
 	}
 	return 1;
 }
