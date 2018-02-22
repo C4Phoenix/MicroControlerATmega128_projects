@@ -11,7 +11,7 @@
 **					avr-gcc -g -mmcu=atmega128 -o ioisr.elf ioisr.o
 **					avr-objcopy -O ihex ioisr.elf ioisr.hex
 **					or type 'make'
-** Author: 			jacc.stee@gmail.com
+** Author: 			jacc.stee@gmail.com, Robin Hobbel
 ** -------------------------------------------------------------------------*/
 
 /*
@@ -50,8 +50,6 @@ int main (void)
 	while(1)
 	{
 		//empty while loop to make the main spin for nothing
-		//wait(100);
-		//moveLight();
 	}	
 }
 

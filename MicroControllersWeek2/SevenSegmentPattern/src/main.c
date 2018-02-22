@@ -3,27 +3,28 @@
 ** support, and with no warranty, express or implied, as to its usefulness for
 ** any purpose.
 **
-** lookup.c
+** main.c
 **
-** Beschrijving:	Ledpatroon op PORTD dmv table lookup (scheiding logica en data)    
+** Beschrijving:	Ledpatroon op PORTD dmv table lookup (scheiding logica en data). Used with a 7 segment display.   
 ** Target:			AVR mcu
 ** Build:			avr-gcc -std=c99 -Wall -O3 -mmcu=atmega128 -D F_CPU=8000000UL -c switch.c
 **					avr-gcc -g -mmcu=atmega128 -o lookup.elf lookup.o
 **					avr-objcopy -O ihex lookup.elf lookup.hex 
 **					or type 'make'
-** Author: 			dkroeske@gmail.com
+** Author: 			Robin Hobbel, Jacco Steegman
 ** -------------------------------------------------------------------------*/
 #define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
 void wait( int ms );
 
+//a struct used to build the animations
 typedef struct { 
 	unsigned char data;
 	unsigned int delay ;
 } PATTERN_STRUCT; 
 
-
+//this is the animation pattern
 PATTERN_STRUCT pattern[] = { 
    //0b0gfedcba
 	{0b00000001,100},
@@ -62,7 +63,7 @@ short:			main() loop, entry point of executable
 inputs:			
 outputs:	
 notes:			
-Version :    	DMK, Initial code
+Version :    	Robin Hobbel, Jacco Steegman, Initial code
 *******************************************************************/
 {
 	DDRD = 0b11111111;					// PORTD all output 
@@ -70,6 +71,7 @@ Version :    	DMK, Initial code
 	int animationLenth = 8;
 	while (1==1)
 	{
+	//this loop keeps repeating the pattern using modulo based on the length of the animation.
 		frame++;
 		frame %= animationLenth;
 		PORTD = pattern[frame].data;
