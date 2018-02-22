@@ -5,7 +5,7 @@
 **
 ** main.c
 **
-** Beschrijving:	Ledpatroon op PORTD dmv table lookup (scheiding logica en data)    
+** Beschrijving:	Display numbers on a seven segment display on PORTD using a table lookup. using interupts to make the number go up or down with buttons.
 ** Target:			AVR mcu
 ** Build:			avr-gcc -std=c99 -Wall -O3 -mmcu=atmega128 -D F_CPU=8000000UL -c switch.c
 **					avr-gcc -g -mmcu=atmega128 -o lookup.elf lookup.o
@@ -116,6 +116,7 @@ outputs:
 notes:
 Version :    	Robin Hobbel, Initial code
 *******************************************************************/
+	//contains a check so the digit doesn't go past 14
 	if(0 <= digit && digit <=15){
 		PORTC = lookup[digit];
 	} else {
