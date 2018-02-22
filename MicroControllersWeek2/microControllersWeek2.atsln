@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "IOISR", "IOISR\IOISR.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Interupt_WalkingLED", "Interupt_WalkingLED\Interupt_WalkingLED.cproj", "{3125BD1F-19B6-4E7B-8472-545DB98FD61B}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SevenSegment", "SevenSegment\SevenSegment.cproj", "{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SevenSegmentPattern", "SevenSegmentPattern\SevenSegmentPattern.cproj", "{9F651073-CF45-4E0B-AF78-A9017D3D405C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{3125BD1F-19B6-4E7B-8472-545DB98FD61B}.Debug|AVR.ActiveCfg = Debug|AVR
+		{3125BD1F-19B6-4E7B-8472-545DB98FD61B}.Debug|AVR.Build.0 = Debug|AVR
+		{3125BD1F-19B6-4E7B-8472-545DB98FD61B}.Release|AVR.ActiveCfg = Release|AVR
+		{3125BD1F-19B6-4E7B-8472-545DB98FD61B}.Release|AVR.Build.0 = Release|AVR
+		{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}.Debug|AVR.ActiveCfg = Debug|AVR
+		{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}.Debug|AVR.Build.0 = Debug|AVR
+		{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}.Release|AVR.ActiveCfg = Release|AVR
+		{48E15A1C-3F55-4628-9E6C-4CF73B5645BF}.Release|AVR.Build.0 = Release|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Debug|AVR.Build.0 = Debug|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Release|AVR.ActiveCfg = Release|AVR
+		{9F651073-CF45-4E0B-AF78-A9017D3D405C}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

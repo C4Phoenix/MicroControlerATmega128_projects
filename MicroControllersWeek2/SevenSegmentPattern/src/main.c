@@ -3,25 +3,40 @@
 ** support, and with no warranty, express or implied, as to its usefulness for
 ** any purpose.
 **
-** main.c
+** lookup.c
 **
-** Beschrijving:	Switches between bit 6 and bit 7
+** Beschrijving:	Ledpatroon op PORTD dmv table lookup (scheiding logica en data)    
 ** Target:			AVR mcu
 ** Build:			avr-gcc -std=c99 -Wall -O3 -mmcu=atmega128 -D F_CPU=8000000UL -c switch.c
-**					avr-gcc -g -mmcu=atmega128 -o switch.elf switch.o
-**					avr-objcopy -O ihex switch.elf switch.hex
+**					avr-gcc -g -mmcu=atmega128 -o lookup.elf lookup.o
+**					avr-objcopy -O ihex lookup.elf lookup.hex 
 **					or type 'make'
-** Author: 			rm.hobbel@gmail.com && jacc.stee@gmail.com
+** Author: 			dkroeske@gmail.com
 ** -------------------------------------------------------------------------*/
 #define F_CPU 8000000
-#define BIT(x) (1 << (x))
-
-
 #include <avr/io.h>
 #include <util/delay.h>
 void wait( int ms );
 
+typedef struct { 
+	unsigned char data;
+	unsigned int delay ;
+} PATTERN_STRUCT; 
 
+
+PATTERN_STRUCT pattern[] = { 
+   //0b0gfedcba
+	{0b00000001,100},
+	{0b00000010,100},
+	{0b01000000,100},
+	{0b00010000,100},
+	{0b00001000,100},
+	{0b00000100,100},
+	{0b01000000,100},
+	{0b00100000,100},
+};
+
+/******************************************************************/
 void wait( int ms )
 /* 
 short:			Busy wait number of millisecs
@@ -39,15 +54,27 @@ Version :    	DMK, Initial code
 	}
 }
 
-#define BIT(x) (1 << (x))
+
 /******************************************************************/
-int main( void ){
-	DDRD = 0b11111111;	
-	PORTD = BIT(7);//also possible: PORTD = 0b10000000;
-	while (1)
-	{	
-		PORTD ^= (BIT(7) | BIT(6)); //also possible: PORTD ^= 0b11000000; //switch between bit 6 & 7
-		wait(250);
+int main( void )
+/* 
+short:			main() loop, entry point of executable
+inputs:			
+outputs:	
+notes:			
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	DDRD = 0b11111111;					// PORTD all output 
+	int frame = 0;
+	int animationLenth = 8;
+	while (1==1)
+	{
+		frame++;
+		frame %= animationLenth;
+		PORTD = pattern[frame].data;
+		wait(pattern[frame].delay);
 	}
+
 	return 1;
 }
