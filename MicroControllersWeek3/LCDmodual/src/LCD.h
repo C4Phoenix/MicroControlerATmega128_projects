@@ -13,6 +13,9 @@ void lcd_write_data(unsigned char byte);
 void lcd_write_cmd(unsigned char byte);
 void lcd_write_command(unsigned char byte);
 int func_main(void);
+void init();
+void dislay_text(char *str);
+void set_cursor(int position);
 
 #ifndef FUNCTIONS_H_
 #define FUNCTIONS_H_

@@ -76,12 +76,18 @@ Version :    	DMK, Initial code
 
 void init()
 {
-	init_4bits_mode()
+	init_4bits_mode();
 }
 
 void dislay_text(char *str)
 {
 	lcd_write_string(str);
+}
+
+void set_cursor(int position)
+{
+	
+	lcd_write_command(0b10000000 + position);
 }
 
 /******************************************************************/

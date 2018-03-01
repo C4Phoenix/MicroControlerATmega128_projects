@@ -41,8 +41,9 @@ int main (void)
 {
 	/* Insert system clock initialization code here (sysclk_init()). */
 
-	board_init();
+	//board_init();
 	func_main();
+	//set_cursor(2);
 	
 	
 
