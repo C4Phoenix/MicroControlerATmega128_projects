@@ -1,5 +1,5 @@
 
-#define LCD_data P2
+#define LCD_data P3
 #define LCD_D7   P2_7
 #define LCD_rs   P1_0
 #define LCD_rw   P1_1
@@ -54,4 +54,7 @@ void LCD_init()
      wait(4);
 }
 
-void
+void SendLCD_DATA(int data)
+{
+    LCD_data = data 
+}
