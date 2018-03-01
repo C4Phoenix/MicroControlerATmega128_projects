@@ -29,6 +29,18 @@
 #define LCD_RS	2
 
 
+void init(void )
+{
+	init_4bits_mode();
+}
+void display_text(char *str)
+{
+	lcd_write_string(str);
+}
+void set_cursor(int position)
+{
+	lcd_write_command(0b10000000 + position);
+}
 
 /******************************************************************/
 void lcd_strobe_lcd_e(void)

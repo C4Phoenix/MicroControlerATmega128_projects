@@ -42,9 +42,11 @@ int main (void)
 	/* Insert system clock initialization code here (sysclk_init()). */
 
 	//board_init();
-	lcd_test_main();
+	//lcd_test_main();
 	
-	
+	init();
+	display_text("test");
+	set_cursor(2);
 
 	/* Insert application code here, after the board has been initialized. */
 }

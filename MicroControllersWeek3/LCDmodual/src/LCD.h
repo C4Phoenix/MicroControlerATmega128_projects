@@ -19,5 +19,9 @@ void lcd_write_data(unsigned char byte);
 void lcd_write_command(unsigned char byte);
 int lcd_test_main( void );
 
+void init(void);
+void display_text(char *str);
+void set_cursor(int position);
+
 
 #endif /* FUNCTIONS_H_ */
