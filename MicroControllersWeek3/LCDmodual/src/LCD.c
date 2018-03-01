@@ -69,36 +69,7 @@ Version :    	DMK, Initial code
 *******************************************************************/
 {
 	// PORTC output mode and all low (also E and RS pin)
-	/*
-	DDRC = 0xFF;
-	PORTC = 0x00;
 
-	// Step 2 (table 12)
-	PORTC = 0x20;	// function set
-	lcd_strobe_lcd_e();
-
-	// Step 3 (table 12)
-	PORTC = 0x20;   // function set
-	lcd_strobe_lcd_e();
-	PORTC = 0x80;
-	lcd_strobe_lcd_e();
-
-	// Step 4 (table 12)
-	PORTC = 0x00;   // Display on/off control
-	lcd_strobe_lcd_e();
-	PORTC = 0xF0;
-	lcd_strobe_lcd_e();
-
-	// Step 4 (table 12)
-	PORTC = 0x00;   // Entry mode set
-	lcd_strobe_lcd_e();
-	PORTC = 0x60;
-	lcd_strobe_lcd_e();
-
-	_delay_ms(10);
-	lcd_write_command(0x01);
-	_delay_ms(10);
-	*/
 	DDRC = 0xFF;
 	PORTC = 0x00;
 
@@ -110,9 +81,6 @@ Version :    	DMK, Initial code
 	lcd_write_command(0b00000001);
 	lcd_write_command(0b00001110);
 	lcd_write_command(0b00000110);
-
-
-
 }
 
 /******************************************************************/

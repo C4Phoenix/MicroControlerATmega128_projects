@@ -45,7 +45,7 @@ int main (void)
 	//lcd_test_main();
 	
 	init();
-	display_text("test");
+	display_text("test 123 test");
 	set_cursor(2);
 
 	/* Insert application code here, after the board has been initialized. */
