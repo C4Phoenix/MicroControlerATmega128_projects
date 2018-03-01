@@ -35,13 +35,14 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
+#include <LCD.h>
 
 int main (void)
 {
 	/* Insert system clock initialization code here (sysclk_init()). */
 
 	board_init();
-	LCD_init();
+	func_main();
 	
 	
 
