@@ -17,7 +17,6 @@
 
 #define F_CPU 8000000
 
-#include "LCD.h"
 
 #include <asf.h>
 
@@ -25,8 +24,38 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
+
 #define LCD_E 	3
 #define LCD_RS	2
+
+void lcd_strobe_lcd_e(void);
+void init_4bits_mode(void);
+void lcd_write_string(char *str);
+void lcd_write_data(unsigned char byte);
+void lcd_write_command(unsigned char byte);
+int lcd_test_main( void );
+
+void init(void);
+void display_text(char *str);
+void set_cursor(int position);
+
+//written by Jacco Steegman & Robin Hobble
+void init(void)
+{
+	init_4bits_mode();
+}
+
+
+void display_text(char *str)
+{
+	lcd_write_string(str);
+}
+
+void set_cursor(int position)
+{
+	lcd_write_command(0b10000000 + position);
+}
+
 
 
 /******************************************************************/
