@@ -195,6 +195,9 @@
     <Compile Include="src\LCD.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\LCD.h">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="src\asf.h">
       <SubType>compile</SubType>
     </None>
