@@ -35,7 +35,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
-#include <LCD.h>
+#include "LCD.c"
 
 int main (void)
 {
@@ -43,7 +43,7 @@ int main (void)
 
 	//board_init();
 	lcd_test_main();
-	
+	set_cursor(2);
 	
 
 	/* Insert application code here, after the board has been initialized. */
