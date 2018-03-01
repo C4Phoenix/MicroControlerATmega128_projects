@@ -93,6 +93,7 @@ notes:			According datasheet HD44780 table 12
 Version :    	DMK, Initial code
 *******************************************************************/
 {
+	lcd_write_command(0b00000001);//clear screen
 	for(;*str; str++){
 		lcd_write_data(*str);
 	}

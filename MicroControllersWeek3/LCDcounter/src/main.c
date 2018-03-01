@@ -28,13 +28,59 @@
 /*
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
+
+
+#define F_CPU 8000000
+
 #include <asf.h>
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
+
+#include "LCD.h"
+
+int counter=0;
+int needsUpdate= 0;
 
 int main (void)
 {
 	/* Insert system clock initialization code here (sysclk_init()). */
 
-	board_init();
+	DDRD = 0;//init readout for buttorn row d
+	
+	//enable interupt
+	EICRA |= 0b00111100;
+	EIMSK |= 0b00000110;
 
+	sei();//enable global interupt
+	
+	init();
+	
+	char buffer[16];
+	while(1)
+	{
+		if (needsUpdate)
+		{
+			itoa(counter, buffer,16);
+			
+			display_text(buffer);
+			needsUpdate = 0;
+		}
+		_delay_ms(30);
+	}
+	
 	/* Insert application code here, after the board has been initialized. */
+}
+
+//interupt methods
+ISR(INT1_vect)
+{
+	counter++;
+	needsUpdate = 1;
+}
+
+ISR(INT2_vect)
+{
+	counter--;
+	needsUpdate = 1;
 }
