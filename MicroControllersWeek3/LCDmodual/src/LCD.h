@@ -5,14 +5,13 @@
  *  Author: Jacco Steegman
  */ 
 
-void wait( int ms );
+
 void lcd_strobe_lcd_e(void);
 void init_4bits_mode(void);
 void lcd_write_string(char *str);
 void lcd_write_data(unsigned char byte);
 void lcd_write_cmd(unsigned char byte);
-void lcd_write_command(unsigned char byte);
-int func_main(void);
+int lcd_test_main( void );
 
 #ifndef FUNCTIONS_H_
 #define FUNCTIONS_H_
