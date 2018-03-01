@@ -53,9 +53,9 @@ Version :    	DMK, Initial code
 *******************************************************************/
 {
 	PORTC |= (1<<LCD_E);	// E high
-	_delay_ms(1);			// nodig
+	_delay_ms(1);			// needed to give the board some time
 	PORTC &= ~(1<<LCD_E);  	// E low
-	_delay_ms(1);			// nodig?
+	_delay_ms(1);			// needed for the next command
 }
 
 /******************************************************************/
@@ -78,9 +78,9 @@ Version :    	DMK, Initial code
 	lcd_strobe_lcd_e();
 
 	//lcd_write_command(0b00101000);
-	lcd_write_command(0b00000001);
-	lcd_write_command(0b00001110);
-	lcd_write_command(0b00000110);
+	lcd_write_command(0b00000001);//clear screen
+	lcd_write_command(0b00001110);//make cursof visible display on blink off
+	lcd_write_command(0b00000110);//increases cursor pos and scroll display off. to write left to right
 }
 
 /******************************************************************/
@@ -93,13 +93,6 @@ notes:			According datasheet HD44780 table 12
 Version :    	DMK, Initial code
 *******************************************************************/
 {
-	// Het kan met een while:
-
-	// while(*str) {
-	// 	lcd_write_data(*str++);
-	// }
-
-	// of met een for:
 	for(;*str; str++){
 		lcd_write_data(*str);
 	}
