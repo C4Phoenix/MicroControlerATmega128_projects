@@ -57,6 +57,7 @@ Version :    	DMK, Initial code
 *******************************************************************/
 {
 	// PORTC output mode and all low (also E and RS pin)
+	/*
 	DDRC = 0xFF;
 	PORTC = 0x00;
 
@@ -81,6 +82,24 @@ Version :    	DMK, Initial code
 	lcd_strobe_lcd_e();
 	PORTC = 0x60;
 	lcd_strobe_lcd_e();
+
+	_delay_ms(10);
+	lcd_write_command(0x01);
+	_delay_ms(10);
+	*/
+	DDRC = 0xFF;
+	PORTC = 0x00;
+
+	// Step 2 (table 12)
+	PORTC = 0x20;	// function set
+	lcd_strobe_lcd_e();
+
+	//lcd_write_command(0b00101000);
+	lcd_write_command(0b00000001);
+	lcd_write_command(0b00001110);
+	lcd_write_command(0b00000110);
+
+
 
 }
 
@@ -168,13 +187,14 @@ Version :    	DMK, Initial code
 	init_4bits_mode();
 
 	// Write sample string
+
 	lcd_write_string("Yedi you are");
 
 	// Loop forever
 	while (1)
 	{
-		PORTD ^= (1<<7);	// Toggle PORTD.7
-		_delay_ms( 250 );
+		//PORTD ^= (1<<7);	// Toggle PORTD.7
+		_delay_ms( 30 );
 	}
 
 	return 1;
