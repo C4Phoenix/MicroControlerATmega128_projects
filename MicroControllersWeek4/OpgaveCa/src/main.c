@@ -126,7 +126,7 @@ void spi_writeWord ( unsigned char adress, unsigned char data ) {
 void writeLedDisplay( int value ){
 	int i;
 	if(value < 10000){
-		for(i=1; i<4;i++) {
+		for(i=1; i<=4;i++) {
 			spi_writeWord(i,(value%10));
 			value = value/10;
 		}
