@@ -112,3 +112,11 @@ void displayOff(void);
 }
 
 
+void spi_writeWord ( unsigned char adress, unsigned char data ) {
+	spi_slaveSelect(0);			// Select display chip
+	spi_write(adress);				//  digit adress: (digit place)
+	spi_write(data);				//  digit value: i (= digit place)
+	spi_slaveDeSelect(0);		// Deselect display chip 
+}
+
+
