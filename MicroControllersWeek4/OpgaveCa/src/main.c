@@ -86,7 +86,8 @@ void displayOff(void);
 	spi_slaveDeSelect(0);  // Deselect display chip 
  }
 
- int main() {  DDRB=0x01;     // Set PB0 pin as output for display select  
+ int main() {  
+	DDRB=0x01;     // Set PB0 pin as output for display select  
 	spi_masterInit();               // Initialize spi module  
 	displayDriverInit();            // Initialize display chip
 	 // clear display (all zero's)  
