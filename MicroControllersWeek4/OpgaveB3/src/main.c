@@ -12,6 +12,11 @@
 #include "lcd.h"
 void wait(int);
 
+void initadc(){
+	ADMUX = 0b11100000;
+	ADCSRA = 0b10000010;
+}
+
 int main(void) {	
 	DDRF = 0x00;				//PORTF for input ADC
 	DDRD = 0x00;				//PORTA for output
@@ -22,13 +27,11 @@ int main(void) {
 
 	char string[16];
 
-	ADMUX = 0b11100000;			//spanning met 2,56V ref
-	ADCSRA = 0b11100110;		//Bit 7 enable ADC. Bit 6 ADC start conversie. Bit 5 Free running aan of uit. Bit 2 t/m 0 is voor de prescaler (64).
-    
 	init();
+	initadc();
 	while (1) {
-		lcd_write_command(0b00000001);//clear display
-		int temp = ADCH;
+		void clearDisplay();
+		int temp = ADC;
 		sprintf(string, "Temp: %d", temp);
 		lcd_write_string(string);
 		PORTA = ADCH;//Show on LEDS
