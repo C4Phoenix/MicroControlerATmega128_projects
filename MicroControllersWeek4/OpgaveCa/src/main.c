@@ -122,16 +122,23 @@ void spi_writeWord ( unsigned char adress, unsigned char data ) {
 	spi_slaveDeSelect(0);		// Deselect display chip 
 }
 
-//schijf een positieve integer van maximaal 4 getalen weg.
+//schijf een positieve integer van maximaal 4 getalen weg of een negatieve van maximaal 3 integers
 void writeLedDisplay( int value ){
 	int i;
-	if(value < 10000){
+	if(value < 10000 && value >=0) {
 		for(i=1; i<=4;i++) {
 			spi_writeWord(i,(value%10));
 			value = value/10;
 		}
+	} else if(value < 0 && value > -1000) {
+		for(i=1; i<=3;i++) {
+			spi_writeWord(i,(value%10));
+			value = value/10;
+		}
+		spi_writeWord(4,"-");
 	}
 }
+
 
 
 
