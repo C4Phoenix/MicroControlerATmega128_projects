@@ -24,7 +24,7 @@ void init(void )
 {
 	init_4bits_mode();
 }
-void clearDisplay(){
+void clearDisplay(void){
 	lcd_write_command(0b00000001);
 }
 void display_text(char *str)

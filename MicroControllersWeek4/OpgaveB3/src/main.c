@@ -11,10 +11,11 @@
 #include <stdio.h>
 #include "lcd.h"
 void wait(int);
+void initadc(void);
 
-void initadc(){
+void initadc(void){
 	ADMUX = 0b11100000;
-	ADCSRA = 0b10000010;
+	ADCSRA = 0b11100110;//enable, start, freerunning, prescale 64
 }
 
 int main(void) {	
@@ -30,12 +31,13 @@ int main(void) {
 	init();
 	initadc();
 	while (1) {
-		void clearDisplay();
-		int temp = ADC;
-		sprintf(string, "Temp: %d", temp);
+		void clearDisplay(void);
+
+		int temp = ADCH;
+		sprintf(string, "Temp: %d C", temp);
 		lcd_write_string(string);
-		PORTA = ADCH;//Show on LEDS
-		//PORTB = ADCL;
+		PORTA = ADCH;
+		PORTB = ADCL;
 		wait(1000);
     }
 }
