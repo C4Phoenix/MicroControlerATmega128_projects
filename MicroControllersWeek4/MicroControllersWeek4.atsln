@@ -7,6 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "OpgaveB1", "MicroController
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "OpgaveB2", "OpgaveB2\OpgaveB2.cproj", "{36536CE8-BF2B-4378-B50E-AF8009C475D2}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "OpgaveB3", "OpgaveB3\OpgaveB3.cproj", "{F425C38D-2241-40AF-9949-BC97E11F81D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -21,6 +23,10 @@ Global
 		{36536CE8-BF2B-4378-B50E-AF8009C475D2}.Debug|AVR.Build.0 = Debug|AVR
 		{36536CE8-BF2B-4378-B50E-AF8009C475D2}.Release|AVR.ActiveCfg = Release|AVR
 		{36536CE8-BF2B-4378-B50E-AF8009C475D2}.Release|AVR.Build.0 = Release|AVR
+		{F425C38D-2241-40AF-9949-BC97E11F81D0}.Debug|AVR.ActiveCfg = Debug|AVR
+		{F425C38D-2241-40AF-9949-BC97E11F81D0}.Debug|AVR.Build.0 = Debug|AVR
+		{F425C38D-2241-40AF-9949-BC97E11F81D0}.Release|AVR.ActiveCfg = Release|AVR
+		{F425C38D-2241-40AF-9949-BC97E11F81D0}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
