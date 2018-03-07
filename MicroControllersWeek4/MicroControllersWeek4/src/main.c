@@ -2,7 +2,7 @@
  * Opdracht1.c
  *
  * Created: 7-3-2018 10:49:39
- * Author : 
+ * Author : Robin Hobbel
  */ 
 #define F_CPU 8000000
 #include <avr/io.h>
