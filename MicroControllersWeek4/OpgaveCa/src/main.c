@@ -17,8 +17,10 @@ void spi_slaveDeSelect(unsigned char);
 void displayDriverInit(void);
 void displayOn(void);
 void displayOff(void);
- void wait(int);
-  int main(void);
+void wait(int);
+int main(void);
+void writeLedDisplay( int  );
+void spi_writeWord ( unsigned char , unsigned char );
 
  void wait(int ms) {  
 	for (int i=0; i<ms; i++){   
@@ -107,7 +109,8 @@ void displayOff(void);
 		spi_slaveDeSelect(0);   // Deselect display chip     
 		wait(1000);    
 	}  
-	wait(1000);    
+	wait(1000); 
+	writeLedDisplay(2587);   
 	return (1); 
 }
 
@@ -118,5 +121,17 @@ void spi_writeWord ( unsigned char adress, unsigned char data ) {
 	spi_write(data);				//  digit value: i (= digit place)
 	spi_slaveDeSelect(0);		// Deselect display chip 
 }
+
+//schijf een positieve integer van maximaal 4 getalen weg.
+void writeLedDisplay( int value ){
+	int i;
+	if(value < 10000){
+		for(i=1; i<4;i++) {
+			spi_writeWord(i,(value%10));
+			value = value/10;
+		}
+	}
+}
+
 
 
