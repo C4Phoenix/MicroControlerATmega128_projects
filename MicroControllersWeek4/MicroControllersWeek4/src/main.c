@@ -19,8 +19,8 @@ int main(void) {
 								//Bit 4 tot en met 0 is voor het kiezen van pinF0 tot en met pinF7.
 	ADCSRA = 0b11100110;		//Bit 7 enable ADC. Bit 6 ADC start conversie. Bit 5 Free running aan of uit. Bit 2 t/m 0 is voor de prescaler (64).
     while (1) {
-		PORTB = ADCL;			// Show MSB/LSB (bit 10:0) of ADC
-		PORTA = ADCH;			// ADCH reads the high byte, ADCL reads the low byte, 
+		PORTA = ADCL;			// Show MSB/LSB (bit 10:0) of ADC
+		PORTB = ADCH;			// ADCH reads the high byte, ADCL reads the low byte, 
 								//ADCW read the whole "word"->needs checking if true
 		wait(100);
     }
