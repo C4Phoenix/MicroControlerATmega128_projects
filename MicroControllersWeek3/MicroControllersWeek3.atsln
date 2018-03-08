@@ -7,6 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LCDmodual", "LCDmodual\LCDm
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LCDcounter", "LCDcounter\LCDcounter.cproj", "{5D0EBB07-435C-4671-B256-2C2343D1A81A}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Timer", "Timer\Timer.cproj", "{374788D1-8587-4E03-A937-6A2EDA074CE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -21,6 +23,10 @@ Global
 		{5D0EBB07-435C-4671-B256-2C2343D1A81A}.Debug|AVR.Build.0 = Debug|AVR
 		{5D0EBB07-435C-4671-B256-2C2343D1A81A}.Release|AVR.ActiveCfg = Release|AVR
 		{5D0EBB07-435C-4671-B256-2C2343D1A81A}.Release|AVR.Build.0 = Release|AVR
+		{374788D1-8587-4E03-A937-6A2EDA074CE7}.Debug|AVR.ActiveCfg = Debug|AVR
+		{374788D1-8587-4E03-A937-6A2EDA074CE7}.Debug|AVR.Build.0 = Debug|AVR
+		{374788D1-8587-4E03-A937-6A2EDA074CE7}.Release|AVR.ActiveCfg = Release|AVR
+		{374788D1-8587-4E03-A937-6A2EDA074CE7}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
