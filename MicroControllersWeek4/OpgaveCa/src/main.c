@@ -109,8 +109,9 @@ void spi_writeWord ( unsigned char , unsigned char );
 		spi_slaveDeSelect(0);   // Deselect display chip     
 		wait(1000);    
 	}  
-	wait(1000); 
-	writeLedDisplay(2587);   
+	writeLedDisplay(2587);  
+	wait(1000);
+	writeLedDisplay(-638);  
 	return (1); 
 }
 
@@ -131,11 +132,12 @@ void writeLedDisplay( int value ){
 			value = value/10;
 		}
 	} else if(value < 0 && value > -1000) {
+		value = value * -1; //make value positive
 		for(i=1; i<=3;i++) {
 			spi_writeWord(i,(value%10));
 			value = value/10;
 		}
-		spi_writeWord(4,"-");
+		spi_writeWord(4,10);
 	}
 }
 
