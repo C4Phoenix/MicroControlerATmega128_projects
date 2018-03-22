@@ -14,6 +14,7 @@ void clearDisplay1(void);
 void clearDisplay2(void);
 void setLedsInRowD2(int, int);
 void printImageD1(unsigned char*);
+void printImageD2(unsigned char*);
 //unsigned char* mirror_img(unsigned char*);
 
 void twi_init(void)
@@ -70,6 +71,9 @@ int main( void )
 	clearDisplay2();
 	printImageD1(image);
 	wait(1000);
+	printImageD2(image);
+	wait(1000);
+	/*
 	for (int i = 0; i<=16;i +=2){
 		for (int j = 0 ; j <=255;j++)
 		{
@@ -79,6 +83,7 @@ int main( void )
 			setLedsInRowD2(16-i,254-j);
 		}
 	}
+	*/
 	while (1)
 	{
 		brightness++;
