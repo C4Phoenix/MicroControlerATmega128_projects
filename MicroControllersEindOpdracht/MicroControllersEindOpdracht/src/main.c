@@ -314,7 +314,7 @@ void playAnimationWithReverse(Animation* animation) {
 		wait(animation->delay);
 		printImageD2(animation->images[i]);
 	}
-	for(int i = (animation->frames-1); i>=0; i--) {
+	for(int i = (animation->frames-2); i>=0; i--) {
 		wait(animation->delay);
 		printImageD2(animation->images[i]);
 	}
