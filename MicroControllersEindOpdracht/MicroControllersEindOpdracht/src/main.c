@@ -164,13 +164,10 @@ int main( void )
 	setupDisplay();
 	clearDisplay1();
 	clearDisplay2();
-	printImageD1(image);
-	wait(1000);
-	printImageD2(image);
-	wait(1000);
 	while(1){
-		playAnimation(blink);
+		playAnimation(&blink);
 	}
+
 	while (1)
 	{
 		brightness++;
@@ -290,9 +287,9 @@ void printImageD2(unsigned char* img){
 	}
 }
 
-void playAnimation(Animation animation){
-	for(int i = 0; i<=animation.frames; i++){
-		wait(animation.delay);
-		printImageD2(animation.images[i]);
+void playAnimation(Animation* animation){
+	for(int i = 0; i<animation->frames; i++){
+		wait(animation->delay);
+		printImageD2(animation->images[i]);
 	}
 }
