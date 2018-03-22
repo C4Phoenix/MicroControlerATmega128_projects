@@ -182,8 +182,11 @@ int main( void )
 	clearDisplay1();
 	clearDisplay2();
 	while(1){
+		playAnimation(&blink);
+		wait(1000);
 		playAnimationWithReverse(&blink);
 		wait(1000);
+		
 	}
 
 	while (1)
@@ -333,5 +336,5 @@ void setBitOn(int x,int y)
 int isBitOn(unsigned char* toCheck, int x, int y)
 {
 	unsigned char byte = toCheck[y];
-	return (1 & (byte >> x));
+	return ((byte >> x)%2);
 }
