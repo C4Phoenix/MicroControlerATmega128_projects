@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <stdio.h>
+#include <string.h>
 
 void setBrightness(int);
 void sendDataD1(int);
@@ -15,7 +16,101 @@ void clearDisplay2(void);
 void setLedsInRowD2(int, int);
 void printImageD1(unsigned char*);
 void printImageD2(unsigned char*);
+void playAnimation(Animation);
 //unsigned char* mirror_img(unsigned char*);
+typedef struct _Animation {
+	int delay;
+	int frames;
+	unsigned char images[][8];
+} Animation;
+
+Animation blink = {
+	100,
+	9,
+	{{
+		0B00000000,
+		0B00011000,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00011000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00011000,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00011000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00000000,
+		0B00011000,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00000000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00011000,
+		0B00111100,
+		0B00011000,
+		0B00000000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00011000,
+		0B00000000,
+		0B00000000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00011000,
+		0B00000000,
+		0B00000000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00000000,
+		0B00000000,
+		0B00011000,
+		0B00111100,
+		0B00011000,
+		0B00000000,
+		0B00000000
+		},{
+		0B00000000,
+		0B00000000,
+		0B00011000,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00000000,
+		0B00000000
+	}}
+};
+
 
 void twi_init(void)
 {
@@ -73,17 +168,9 @@ int main( void )
 	wait(1000);
 	printImageD2(image);
 	wait(1000);
-	/*
-	for (int i = 0; i<=16;i +=2){
-		for (int j = 0 ; j <=255;j++)
-		{
-			wait(5);
-			setLedsInRowD1(i,j);
-			wait(5);
-			setLedsInRowD2(16-i,254-j);
-		}
+	while(1){
+		playAnimation(blink);
 	}
-	*/
 	while (1)
 	{
 		brightness++;
@@ -200,5 +287,12 @@ void printImageD1(unsigned char* img){
 void printImageD2(unsigned char* img){
 	for(int row = 0; row <= 7; row++) {
 		setLedsInRowD2((row*2),img[row]);
+	}
+}
+
+void playAnimation(Animation animation){
+	for(int i = 0; i<=animation.frames; i++){
+		wait(animation.delay);
+		printImageD2(animation.images[i]);
 	}
 }
