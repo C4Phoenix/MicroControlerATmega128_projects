@@ -1,7 +1,7 @@
 #define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 typedef struct _Animation {
 	int delay;
@@ -21,6 +21,7 @@ void setLedsInRowD2(int, int);
 void printImageD1(unsigned char*);
 void printImageD2(unsigned char*);
 void playAnimation(Animation*);
+void playAnimationWithReverse(Animation*);
 //unsigned char* mirror_img(unsigned char*);
 
 
@@ -175,7 +176,7 @@ int main( void )
 	clearDisplay1();
 	clearDisplay2();
 	while(1){
-		playAnimation(&blink);
+		playAnimationWithReverse(&blink);
 		wait(1000);
 	}
 
@@ -263,7 +264,7 @@ void setupDisplay(){
 	sendDataD1(0b10000001);
 	sendDataD2(0b10000001);
 }
-/*
+
 unsigned char* mirror_img(unsigned char* imge){
 	unsigned char* toReturn = malloc(sizeof(unsigned char)*sizeof(imge));
 
@@ -284,7 +285,7 @@ unsigned char* mirror_img(unsigned char* imge){
 	}
 	return toReturn;
 }
-*/
+
 
 void printImageD1(unsigned char* img){
 	for(int row = 0; row <= 7; row++) {
@@ -300,6 +301,17 @@ void printImageD2(unsigned char* img){
 
 void playAnimation(Animation* animation){
 	for(int i = 0; i<animation->frames; i++){
+		wait(animation->delay);
+		printImageD2(animation->images[i]);
+	}
+}
+
+void playAnimationWithReverse(Animation* animation) {
+	for(int i = 0; i<animation->frames; i++) {
+		wait(animation->delay);
+		printImageD2(animation->images[i]);
+	}
+	for(int i = (animation->frames-1); i>=0; i--) {
 		wait(animation->delay);
 		printImageD2(animation->images[i]);
 	}
