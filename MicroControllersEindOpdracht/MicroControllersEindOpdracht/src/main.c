@@ -27,7 +27,7 @@ void playAnimationWithReverse(Animation*);
 
 Animation blink = {
 	100,
-	10,
+	6,
 	{{
 		0B00000000,
 		0B00011000,
@@ -82,7 +82,9 @@ Animation blink = {
 		0B00000000,
 		0B00000000,
 		0B00000000
-		},{
+		}
+		/*
+		,{
 		0B00000000,
 		0B00000000,
 		0B00000000,
@@ -119,6 +121,7 @@ Animation blink = {
 		0B00011000,
 		0B00000000
 		}
+		*/
 	}
 };
 
