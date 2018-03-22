@@ -22,8 +22,11 @@ void printImageD1(unsigned char*);
 void printImageD2(unsigned char*);
 void playAnimation(Animation*);
 void playAnimationWithReverse(Animation*);
+unsigned char* rotate_clockwise(unsigned char*);
+void setBitOn(int,int);
+int isBitOn(unsigned char* , int , int );
 //unsigned char* mirror_img(unsigned char*);
-
+unsigned char* workingRotation;
 
 Animation blink = {
 	100,
@@ -268,27 +271,6 @@ void setupDisplay(){
 	sendDataD2(0b10000001);
 }
 
-unsigned char* mirror_img(unsigned char* imge){
-	unsigned char* toReturn = malloc(sizeof(unsigned char)*sizeof(imge));
-
-	short len = 0;
-	for(len =0; len< sizeof(imge); len++)
-	{
-		unsigned char toMir = imge[len];
-		int i=7;
-		unsigned char j=0;
-		unsigned char temp=0;
-
-		while(i>=0){
-			temp |= (( toMir >> j ) &1 ) << i;
-			i--;
-			j++;
-		}
-		toReturn[len] = temp;
-	}
-	return toReturn;
-}
-
 
 void printImageD1(unsigned char* img){
 	for(int row = 0; row <= 7; row++) {
@@ -312,10 +294,44 @@ void playAnimation(Animation* animation){
 void playAnimationWithReverse(Animation* animation) {
 	for(int i = 0; i<animation->frames; i++) {
 		wait(animation->delay);
-		printImageD2(animation->images[i]);
+		printImageD2(rotate_clockwise(animation->images[i]));
 	}
 	for(int i = (animation->frames-2); i>=0; i--) {
 		wait(animation->delay);
-		printImageD2(animation->images[i]);
+		printImageD2(rotate_clockwise(animation->images[i]));
 	}
+}
+
+
+unsigned char* rotate_clockwise(unsigned char* toRotate)
+{
+	if (workingRotation != NULL) free(workingRotation);
+	workingRotation = calloc(0,sizeof(unsigned char) *8);
+
+	for(int y = 0; y < 8; y++)// array y (top to bottom)
+	{
+		for(int x = 0; x < 8; x++)// x coordinate
+		{
+			if(isBitOn(toRotate, x, y) == 1)
+			{
+				setBitOn(x,y);
+			}
+		}
+	}
+
+	return workingRotation;
+}
+
+void setBitOn(int x,int y)
+{
+	int newX, newY;
+	newX = 7-y;
+	newY = x;
+	workingRotation[newY] |= 1 << newX;
+}
+
+int isBitOn(unsigned char* toCheck, int x, int y)
+{
+	unsigned char byte = toCheck[y];
+	return (1 & (byte >> x));
 }
