@@ -3,7 +3,11 @@
 #include <util/delay.h>
 #include <stdio.h>
 #include <string.h>
-
+typedef struct _Animation {
+	int delay;
+	int frames;
+	unsigned char images[][8];
+} Animation;
 void setBrightness(int);
 void sendDataD1(int);
 void sendDataD2(int);
@@ -16,17 +20,13 @@ void clearDisplay2(void);
 void setLedsInRowD2(int, int);
 void printImageD1(unsigned char*);
 void printImageD2(unsigned char*);
-void playAnimation(Animation);
+void playAnimation(Animation*);
 //unsigned char* mirror_img(unsigned char*);
-typedef struct _Animation {
-	int delay;
-	int frames;
-	unsigned char images[][8];
-} Animation;
+
 
 Animation blink = {
 	100,
-	9,
+	10,
 	{{
 		0B00000000,
 		0B00011000,
@@ -108,7 +108,17 @@ Animation blink = {
 		0B00111100,
 		0B00000000,
 		0B00000000
-	}}
+		},{
+		0B00000000,
+		0B00011000,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00111100,
+		0B00011000,
+		0B00000000
+		}
+	}
 };
 
 
@@ -166,6 +176,7 @@ int main( void )
 	clearDisplay2();
 	while(1){
 		playAnimation(&blink);
+		wait(1000);
 	}
 
 	while (1)
