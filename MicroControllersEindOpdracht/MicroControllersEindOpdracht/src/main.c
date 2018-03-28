@@ -28,6 +28,7 @@ void twi_stop(void);
 void twi_tx(unsigned char);
 void wait(int);
 
+#pragma region wink 
 Eyes wink = {
 	100,
 	5,
@@ -139,7 +140,7 @@ Eyes wink = {
 		}
 	}
 };
-
+#pragma endregion wink
 
 
 void twi_init(void)
