@@ -29,7 +29,6 @@ void twi_start(void);
 void twi_stop(void);
 void twi_tx(unsigned char);
 void wait(int);
-void init_intterupts(void);
 int brightness = 0;
 int winkFlag = 0;
 
@@ -148,24 +147,6 @@ Eyes wink = {
 };
 #pragma endregion wink
 
-void init_intterupts(){
-	DDRA = 0x00;
-	EICRA |= 0x3C;
-	EIMSK |= 0x06;
-
-	//enable global interupt system
-	sei();
-}
-
-ISR( INT1_vect)//interupt no 1
-{
-	winkFlag = 1;
-}
-
-ISR( INT2_vect)//interupt no2
-{
-	winkFlag = 1;
-}
 
 void twi_init(void)
 {
@@ -202,7 +183,6 @@ void wait( int ms )
 
 int main( void )
 {
-	init_intterupts();
 	twi_init();
 	setupRegister();
 	setChipPins();
@@ -210,7 +190,12 @@ int main( void )
 	clearDisplay1();
 	clearDisplay2();
 	while(1){
-		playAnimationsOnEyes(&wink);
+		//if(winkFlag) {
+			playAnimationsOnEyes(&wink);
+			//winkFlag = 0;
+		//} else {
+
+		//}
 		wait(1000);
 		
 	}
