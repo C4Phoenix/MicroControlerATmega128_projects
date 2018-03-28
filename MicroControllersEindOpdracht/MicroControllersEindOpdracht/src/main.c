@@ -1,8 +1,10 @@
 #define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
 #include <stdlib.h>
 #include <string.h>
+
 typedef struct _Eyes {
 	int delay;
 	int frames;
@@ -28,6 +30,7 @@ void twi_stop(void);
 void twi_tx(unsigned char);
 void wait(int);
 void init_intterupts(void);
+int brightness = 0;
 int winkFlag = 0;
 
 
@@ -199,7 +202,7 @@ void wait( int ms )
 
 int main( void )
 {
-	int brightness = 0;
+	init_intterupts();
 	twi_init();
 	setupRegister();
 	setChipPins();
