@@ -6,8 +6,7 @@
 typedef struct _Eyes {
 	int delay;
 	int frames;
-	unsigned char leftEye[][8];
-	unsigned char rightEye[][8];
+	unsigned char images[][2][8];
 } Eyes;
 #define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 void setBrightness(int);
@@ -23,108 +22,122 @@ void setLedsInRowD2(int, int);
 void printImageD1(unsigned char*);
 void printImageD2(unsigned char*);
 void playAnimationsOnEyes(Eyes*);
+void twi_init(void);
+void twi_start(void);
+void twi_stop(void);
+void twi_tx(unsigned char);
+void wait(int);
 
 Eyes wink = {
 	100,
 	5,
-	{{
-		0B00000000,
-		0B00000000,
-		0B00111100,
-		0B01111110,
-		0B01111110,
-		0B00111100,
-		0B00000000,
-		0B00000000
-		},{
-		0B00000000,
-		0B00000000,
-		0B00011100,
-		0B00111100,
-		0B00111100,
-		0B00011100,
-		0B00000000,
-		0B00000000
-		},{
-		0B00000000,
-		0B00000000,
-		0B00001000,
-		0B00011100,
-		0B00011100,
-		0B00001000,
-		0B00000000,
-		0B00000000
-		},{
-		0B00000000,
-		0B00000000,
-		0B00000000,
-		0B00001000,
-		0B00001000,
-		0B00000000,
-		0B00000000,
-		0B00000000
-		},{
-		0B00000000,
-		0B00000000,
-		0B00000000,
-		0B00000000,
-		0B00000000,
-		0B00000000,
-		0B00000000,
-		0B00000000
+	{//frames
+		{//frame 1
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 2
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00011100,
+				0B00111100,
+				0B00111100,
+				0B00011100,
+				0B00000000,
+				0B00000000
+			},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 3
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00001000,
+				0B00011100,
+				0B00011100,
+				0B00001000,
+				0B00000000,
+				0B00000000
+			},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 4
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B00001000,
+				0B00001000,
+				0B00000000,
+				0B00000000,
+				0B00000000
+			},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 5
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B00000000
+			},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		}
 	}
-},
-	{{
-		0B00000000,
-		0B00000000,
-		0B00111100,
-		0B01111110,
-		0B01111110,
-		0B00111100,
-		0B00000000,
-		0B00000000
-	},
-	{
-		0B00000000,
-		0B00000000,
-		0B00111100,
-		0B01111110,
-		0B01111110,
-		0B00111100,
-		0B00000000,
-		0B00000000
-	},
-	{
-		0B00000000,
-		0B00000000,
-		0B00111100,
-		0B01111110,
-		0B01111110,
-		0B00111100,
-		0B00000000,
-		0B00000000
-	},
-	{
-		0B00000000,
-		0B00000000,
-		0B00111100,
-		0B01111110,
-		0B01111110,
-		0B00111100,
-		0B00000000,
-		0B00000000
-	},
-	{
-		0B00000000,
-		0B00000000,
-		0B00111100,
-		0B01111110,
-		0B01111110,
-		0B00111100,
-		0B00000000,
-		0B00000000
-	}
-}
 };
 
 
@@ -165,16 +178,6 @@ void wait( int ms )
 int main( void )
 {
 	int brightness = 0;
-	unsigned char image[8]= {
-		0b00110011,
-		0b00110011,
-		0b00110011,
-		0b00110011,
-		0b00110011,
-		0b00110011,
-		0b00110011,
-		0b00110011,
-	};
 	twi_init();
 	setupRegister();
 	setChipPins();
@@ -182,9 +185,6 @@ int main( void )
 	clearDisplay1();
 	clearDisplay2();
 	while(1){
-		//playAnimation(&blink);
-		//wait(1000);
-		//playAnimationWithReverse(&blink);
 		playAnimationsOnEyes(&wink);
 		wait(1000);
 		
@@ -203,13 +203,13 @@ int main( void )
 
 void playAnimationsOnEyes(Eyes* eyes) {
 	for(int i = 0; i<eyes->frames; i++) {
-		printImageD1(eyes->leftEye[i]);
-		printImageD2(eyes->rightEye[i]);
+		printImageD1(eyes->images[i][0]);
+		printImageD2(eyes->images[i][1]);
 		wait(eyes->delay);
 	}
 	for(int i = (eyes->frames-2); i>=0; i--) {
-		printImageD1(eyes->leftEye[i]);
-		printImageD2(eyes->rightEye[i]);
+		printImageD1(eyes->images[i][0]);
+		printImageD2(eyes->images[i][1]);
 		wait(eyes->delay);
 	}
 }
