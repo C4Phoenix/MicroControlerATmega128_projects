@@ -204,6 +204,10 @@ void sendDataD2(int data){
 
 
 void setLedsInRowD1(int row, int data){
+		int newData = data; << 1;
+		if(CHECK_BIT(data,7)) {
+			newData ^= 0b10000000;
+		}
 		twi_start();
 		twi_tx(0xE0);	// Display I2C addres + R/W bit //1110 0000	
 		twi_tx(row);	// Address
@@ -212,7 +216,6 @@ void setLedsInRowD1(int row, int data){
 }
 
 void setLedsInRowD2(int row, int data){
-		//---> if(BIT(6))->set bit(0) --> if(BIT(0))--set bit(6)
 		int newData = data >> 1;
 		if(CHECK_BIT(data,7)) {
 			newData ^= 0b10000000;
@@ -284,6 +287,7 @@ void printImageD2(unsigned char* img){
 void playAnimation(Animation* animation){
 	for(int i = 0; i<animation->frames; i++){
 		wait(animation->delay);
+		printImageD1(animation->images[i]);
 		printImageD2(animation->images[i]);
 	}
 }
@@ -292,9 +296,11 @@ void playAnimationWithReverse(Animation* animation) {
 	for(int i = 0; i<animation->frames; i++) {
 		wait(animation->delay);
 		printImageD2(animation->images[i]);
+		printImageD2(animation->images[i]);
 	}
 	for(int i = (animation->frames-2); i>=0; i--) {
 		wait(animation->delay);
+		printImageD1(animation->images[i]);
 		printImageD2(animation->images[i]);
 	}
 }
