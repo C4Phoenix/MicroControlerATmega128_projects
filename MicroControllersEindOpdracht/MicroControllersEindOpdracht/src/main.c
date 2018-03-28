@@ -22,11 +22,13 @@ void printImageD1(unsigned char*);
 void printImageD2(unsigned char*);
 void playAnimation(Animation*);
 void playAnimationWithReverse(Animation*);
-unsigned char* rotate_clockwise(unsigned char*);
-void setBitOn(int,int);
-int isBitOn(unsigned char* , int , int );
+//unsigned char* rotate_clockwise(unsigned char*);
+//void setBitOn(int,int);
+//int isBitOn(unsigned char* , int , int );
+//int getByteNr(unsigned char);
+//unsigned char setByte(unsigned char, int, int);
 //unsigned char* mirror_img(unsigned char*);
-unsigned char* workingRotation;
+//unsigned char* workingRotation;
 
 Animation blink = {
 	100,
@@ -127,7 +129,40 @@ Animation blink = {
 		*/
 	}
 };
+/*
+{  K0B1234 5678
+	0B0000 0000,	1R
+	0B0001 1000,	2R
+	0B0011 1100,	3R
+	0B0011 1100,	4R
+	0B0011 1100,	5R
+	0B0011 1100,	6R
+	0B0001 1000,	7R
+	0B0000 0000		8R
+}
+*/
 
+//rechter rij wordt bovenste rij
+//void draaistuff(unsigned char *image) {
+	//unsigned char newImage[8];
+	//for(int i = 0; i < 8; i++) { //loop langs alle rijen
+		//unsigned char byte = image[i]; //0B0001 1000
+		//unsigned char newByte;
+		//for(int j = 0; j <8; j++) { //loop langs alle 8 bits in de rij
+			//plak alle bits uit kolom 7 achter elkaar.
+			//newByte = setByte(newByte,j,getByteNr(image[j], i));
+		//}
+		//newImage[i] = newByte;//0B0000 0000
+	//}
+//}
+
+//int getByteNr(unsigned char *image, unsigned char byte) {
+	
+//}
+
+//unsigned char setByte(unsigned char byte, int location, int value) {
+
+//}
 
 void twi_init(void)
 {
@@ -297,15 +332,15 @@ void playAnimation(Animation* animation){
 void playAnimationWithReverse(Animation* animation) {
 	for(int i = 0; i<animation->frames; i++) {
 		wait(animation->delay);
-		printImageD2(rotate_clockwise(animation->images[i]));
+		printImageD2(animation->images[i]);
 	}
 	for(int i = (animation->frames-2); i>=0; i--) {
 		wait(animation->delay);
-		printImageD2(rotate_clockwise(animation->images[i]));
+		printImageD2(animation->images[i]);
 	}
 }
 
-
+/*
 unsigned char* rotate_clockwise(unsigned char* toRotate)
 {
 	if (workingRotation != NULL) free(workingRotation);
@@ -338,3 +373,5 @@ int isBitOn(unsigned char* toCheck, int x, int y)
 	unsigned char byte = toCheck[y];
 	return ((byte >> x)%2);
 }
+
+*/
