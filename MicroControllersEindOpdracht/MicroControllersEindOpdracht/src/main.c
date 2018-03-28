@@ -634,6 +634,78 @@ Eyes lookright = {
 };
 #pragma endregion lookright
 
+#pragma region squint
+Eyes squint = {
+	150,
+	3,
+	{//frames
+		{//frame 1
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 2
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000
+			}
+		},
+		{//frame 3
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000
+			}
+		}
+	}
+};
+#pragma endregion squint
+
 int main( void )
 {
 	int counter = 0;
@@ -660,7 +732,7 @@ int main( void )
 				} else if(PINA & (1<<PA4)) {
 					playAnimationsOnEyes(&lookright);
 				} else if(PINA & (1<<PA5)) {
-
+					playAnimationsOnEyes((&squint));
 				} else if(PINA & (1<<PA6)) {
 
 				} else if(PINA & (1<<PA7)) {
@@ -739,9 +811,9 @@ void sendDataD2(int data){
 
 void setLedsInRowD1(int row, int data){
 		int newData = data >> 1;
-		if(CHECK_BIT(data,7)) {
-			newData ^= 0b10000000;
-		}
+		//if(CHECK_BIT(data,7)) {
+		//	newData ^= 0b10000000;
+		//}
 		twi_start();
 		twi_tx(0xE0);	// Display I2C addres + R/W bit //1110 0000	
 		twi_tx(row);	// Address
@@ -751,9 +823,9 @@ void setLedsInRowD1(int row, int data){
 
 void setLedsInRowD2(int row, int data){
 		int newData = data >> 1;
-		if(CHECK_BIT(data,7)) {
-			newData ^= 0b10000000;
-		}
+		//if(CHECK_BIT(data,7)) {
+		//	newData ^= 0b10000000;
+		//}
 		twi_start();
 		twi_tx(0xE4);	// Display I2C addres + R/W bit //1110 0000
 		twi_tx(row);	// Address
