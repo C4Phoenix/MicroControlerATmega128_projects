@@ -3,11 +3,12 @@
 #include <util/delay.h>
 #include <stdlib.h>
 #include <string.h>
-typedef struct _Animation {
+typedef struct _Eyes {
 	int delay;
 	int frames;
-	unsigned char images[][8];
-} Animation;
+	unsigned char leftEye[][8];
+	unsigned char rightEye[][8];
+} Eyes;
 #define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 void setBrightness(int);
 void sendDataD1(int);
@@ -21,28 +22,20 @@ void clearDisplay2(void);
 void setLedsInRowD2(int, int);
 void printImageD1(unsigned char*);
 void printImageD2(unsigned char*);
-void playAnimation(Animation*);
-void playAnimationWithReverse(Animation*);
-//unsigned char* rotate_clockwise(unsigned char*);
-//void setBitOn(int,int);
-//int isBitOn(unsigned char* , int , int );
-//int getByteNr(unsigned char);
-//unsigned char setByte(unsigned char, int, int);
-//unsigned char* mirror_img(unsigned char*);
-//unsigned char* workingRotation;
+void playAnimationsOnEyes(Eyes*);
 
-Animation blink = {
+Eyes wink = {
 	100,
 	5,
 	{{
-		0B01000010,
-		0B10000001,
+		0B00000000,
+		0B00000000,
 		0B00111100,
-		0B01111110, 
+		0B01111110,
 		0B01111110,
 		0B00111100,
-		0B10000001,
-		0B01000010
+		0B00000000,
+		0B00000000
 		},{
 		0B00000000,
 		0B00000000,
@@ -79,9 +72,62 @@ Animation blink = {
 		0B00000000,
 		0B00000000,
 		0B00000000
-		}
 	}
+},
+	{{
+		0B00000000,
+		0B00000000,
+		0B00111100,
+		0B01111110,
+		0B01111110,
+		0B00111100,
+		0B00000000,
+		0B00000000
+	},
+	{
+		0B00000000,
+		0B00000000,
+		0B00111100,
+		0B01111110,
+		0B01111110,
+		0B00111100,
+		0B00000000,
+		0B00000000
+	},
+	{
+		0B00000000,
+		0B00000000,
+		0B00111100,
+		0B01111110,
+		0B01111110,
+		0B00111100,
+		0B00000000,
+		0B00000000
+	},
+	{
+		0B00000000,
+		0B00000000,
+		0B00111100,
+		0B01111110,
+		0B01111110,
+		0B00111100,
+		0B00000000,
+		0B00000000
+	},
+	{
+		0B00000000,
+		0B00000000,
+		0B00111100,
+		0B01111110,
+		0B01111110,
+		0B00111100,
+		0B00000000,
+		0B00000000
+	}
+}
 };
+
+
 
 void twi_init(void)
 {
@@ -136,9 +182,10 @@ int main( void )
 	clearDisplay1();
 	clearDisplay2();
 	while(1){
-		playAnimation(&blink);
-		wait(1000);
-		playAnimationWithReverse(&blink);
+		//playAnimation(&blink);
+		//wait(1000);
+		//playAnimationWithReverse(&blink);
+		playAnimationsOnEyes(&wink);
 		wait(1000);
 		
 	}
@@ -151,6 +198,20 @@ int main( void )
 	}
 
 	return 1;
+}
+
+
+void playAnimationsOnEyes(Eyes* eyes) {
+	for(int i = 0; i<eyes->frames; i++) {
+		printImageD1(eyes->leftEye[i]);
+		printImageD2(eyes->rightEye[i]);
+		wait(eyes->delay);
+	}
+	for(int i = (eyes->frames-2); i>=0; i--) {
+		printImageD1(eyes->leftEye[i]);
+		printImageD2(eyes->rightEye[i]);
+		wait(eyes->delay);
+	}
 }
 
 void sendDataD1(int data){
@@ -246,26 +307,5 @@ void printImageD1(unsigned char* img){
 void printImageD2(unsigned char* img){
 	for(int row = 0; row <= 7; row++) {
 		setLedsInRowD2((row*2),img[row]);
-	}
-}
-
-void playAnimation(Animation* animation){
-	for(int i = 0; i<animation->frames; i++){
-		wait(animation->delay);
-		printImageD1(animation->images[i]);
-		printImageD2(animation->images[i]);
-	}
-}
-
-void playAnimationWithReverse(Animation* animation) {
-	for(int i = 0; i<animation->frames; i++) {
-		wait(animation->delay);
-		printImageD1(animation->images[i]);
-		printImageD2(animation->images[i]);
-	}
-	for(int i = (animation->frames-2); i>=0; i--) {
-		wait(animation->delay);
-		printImageD1(animation->images[i]);
-		printImageD2(animation->images[i]);
 	}
 }
