@@ -636,8 +636,8 @@ Eyes lookright = {
 
 #pragma region squint
 Eyes squint = {
-	150,
-	3,
+	500,
+	2,
 	{//frames
 		{//frame 1
 			{//left eye
@@ -663,33 +663,12 @@ Eyes squint = {
 		{//frame 2
 			{//left eye
 				0B00000000,
-				0B00000000,
-				0B00000000,
 				0B01111000,
 				0B11111100,
 				0B11111100,
 				0B01111000,
-				0B00000000
-				},{//right eye
 				0B00000000,
 				0B00000000,
-				0B00000000,
-				0B01111000,
-				0B11111100,
-				0B11111100,
-				0B01111000,
-				0B00000000
-			}
-		},
-		{//frame 3
-			{//left eye
-				0B00000000,
-				0B00000000,
-				0B00000000,
-				0B01111000,
-				0B11111100,
-				0B11111100,
-				0B01111000,
 				0B00000000
 				},{//right eye
 				0B00000000,
@@ -811,9 +790,6 @@ void sendDataD2(int data){
 
 void setLedsInRowD1(int row, int data){
 		int newData = data >> 1;
-		//if(CHECK_BIT(data,7)) {
-		//	newData ^= 0b10000000;
-		//}
 		twi_start();
 		twi_tx(0xE0);	// Display I2C addres + R/W bit //1110 0000	
 		twi_tx(row);	// Address
@@ -823,9 +799,6 @@ void setLedsInRowD1(int row, int data){
 
 void setLedsInRowD2(int row, int data){
 		int newData = data >> 1;
-		//if(CHECK_BIT(data,7)) {
-		//	newData ^= 0b10000000;
-		//}
 		twi_start();
 		twi_tx(0xE4);	// Display I2C addres + R/W bit //1110 0000
 		twi_tx(row);	// Address
