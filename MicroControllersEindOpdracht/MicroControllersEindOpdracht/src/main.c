@@ -636,7 +636,7 @@ Eyes lookright = {
 
 #pragma region squint
 Eyes squint = {
-	500,
+	250,
 	2,
 	{//frames
 		{//frame 1
