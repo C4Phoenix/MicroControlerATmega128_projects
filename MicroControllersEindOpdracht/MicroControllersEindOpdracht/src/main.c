@@ -27,6 +27,9 @@ void twi_start(void);
 void twi_stop(void);
 void twi_tx(unsigned char);
 void wait(int);
+void init_intterupts(void);
+int winkFlag = 0;
+
 
 #pragma region wink 
 Eyes wink = {
@@ -142,6 +145,24 @@ Eyes wink = {
 };
 #pragma endregion wink
 
+void init_intterupts(){
+	DDRA = 0x00;
+	EICRA |= 0x3C;
+	EIMSK |= 0x06;
+
+	//enable global interupt system
+	sei();
+}
+
+ISR( INT1_vect)//interupt no 1
+{
+	winkFlag = 1;
+}
+
+ISR( INT2_vect)//interupt no2
+{
+	winkFlag = 1;
+}
 
 void twi_init(void)
 {
