@@ -30,9 +30,6 @@ void twi_stop(void);
 void twi_tx(unsigned char);
 void wait(int);
 void initButtons(void);
-int brightness = 0;
-int winkFlag = 0;
-
 
 #pragma region wink 
 Eyes wink = {
@@ -799,57 +796,6 @@ Eyes sad = {
 };
 #pragma endregion sad
 
-#pragma region eyeroll
-Eyes eyeroll = {
-	250,
-	2,
-	{//frames
-		{//frame 1
-			{//left eye
-				0B00000000,
-				0B00000000,
-				0B00111100,
-				0B01111110,
-				0B01111110,
-				0B00111100,
-				0B00000000,
-				0B00000000
-				},{//right eye
-				0B00000000,
-				0B00000000,
-				0B00111100,
-				0B01111110,
-				0B01111110,
-				0B00111100,
-				0B00000000,
-				0B00000000
-			}
-		},
-		{//frame 2
-			{//left eye
-				0B00000000,
-				0B01111000,
-				0B11111100,
-				0B11111100,
-				0B01111000,
-				0B00000000,
-				0B00000000,
-				0B00000000
-				},{//right eye
-				0B00000000,
-				0B00000000,
-				0B00000000,
-				0B01111000,
-				0B11111100,
-				0B11111100,
-				0B01111000,
-				0B00000000
-			}
-		}
-	}
-};
-#pragma endregion eyeroll
-
 int main( void )
 {
 	//initialize counter, for blinking
@@ -883,7 +829,7 @@ int main( void )
 				} else if(PINA & (1<<PA6)) {
 					playAnimationsOnEyes((&sad));
 				} else if(PINA & (1<<PA7)) {
-					playAnimationsOnEyes((&eyeroll));
+					playAnimationsOnEyes((&blink));
 			}
 		}
 		wait(100);
