@@ -180,9 +180,9 @@ void setupDisplay(){
 }
 
 //print an image on dotmatrix
-void printImage(int address, unsigned char* img){
+void printImage(int matrixaddress, unsigned char* img){
 	for(int row = 0; row <= 7; row++) {
-		setLedsInRow(address,(row*2),img[row]);
+		setLedsInRow(matrixaddress,(row*2),img[row]);
 	}
 }
 
