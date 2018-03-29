@@ -24,23 +24,23 @@ int main( void )
 	while(1){
 		if(counter%100==0) {//elke 10 seconde knippert hij
 			playAnimationsOnEyes(&blink);
-			} else {
-				if(PINA & (1<<PA0)) {
-					playAnimationsOnEyes(&wink);
-				} else if(PINA & (1<<PA1)) {
-					playAnimationsOnEyes(&happy);
-				} else if(PINA & (1<<PA2)) {
-					playAnimationsOnEyes(&angry);
-				} else if(PINA & (1<<PA3)) {
-					playAnimationsOnEyes(&lookleft);
-				} else if(PINA & (1<<PA4)) {
-					playAnimationsOnEyes(&lookright);
-				} else if(PINA & (1<<PA5)) {
-					playAnimationsOnEyes((&squint));
-				} else if(PINA & (1<<PA6)) {
-					playAnimationsOnEyes((&sad));
-				} else if(PINA & (1<<PA7)) {
-					playAnimationsOnEyes((&blink));
+		} else {
+			if(PINA & (1<<PA0)) {
+				playAnimationsOnEyes(&wink);
+			} else if(PINA & (1<<PA1)) {
+				playAnimationsOnEyes(&happy);
+			} else if(PINA & (1<<PA2)) {
+				playAnimationsOnEyes(&angry);
+			} else if(PINA & (1<<PA3)) {
+				playAnimationsOnEyes(&lookleft);
+			} else if(PINA & (1<<PA4)) {
+				playAnimationsOnEyes(&lookright);
+			} else if(PINA & (1<<PA5)) {
+				playAnimationsOnEyes((&squint));
+			} else if(PINA & (1<<PA6)) {
+				playAnimationsOnEyes((&sad));
+			} else if(PINA & (1<<PA7)) {
+				playAnimationsOnEyes((&blink));
 			}
 		}
 		wait(100);
