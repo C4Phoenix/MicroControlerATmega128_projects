@@ -789,7 +789,10 @@ Eyes animationPlaceholder2 = {
 
 int main( void )
 {
+	//initialize counter, for blinking
 	int counter = 0;
+
+	//initializes all necessary components
 	twi_init();
 	initButtons();
 	setupRegister();
