@@ -938,25 +938,25 @@ void clearDisplay2(){
 }
 
 
-//set brightness of leds of both dotmatrix displays
+//set brightness of leds of both dotmatrix displays (Datasheet page 17)
 void setBrightness(int brightness){
 	sendDataD1((0b11100000+(brightness)));
 	sendDataD2((0b11100000+(brightness)));
 }
 
-//sets the register of both dotmatrix displays
+//sets the register of both dotmatrix displays (Datasheet page 13)
 void setupRegister(){
 	sendDataD1(0b00100001);
 	sendDataD2(0b00100001);
 }
 
-//sets the chip pins of both dotmatrix displays
+//sets the chip pins of both dotmatrix displays (Datasheet page 13)
 void setChipPins(){
 	sendDataD1(0b10100000);
 	sendDataD2(0b10100000);
 }
 
-//setup of both dotmatrix displays
+//setup of both dotmatrix displays (Datasheet page 14)
 void setupDisplay(){
 	sendDataD1(0b10000001);
 	sendDataD2(0b10000001);
