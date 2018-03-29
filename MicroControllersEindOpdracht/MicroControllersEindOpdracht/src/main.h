@@ -15,17 +15,13 @@ typedef struct _Eyes {
 #define MATRIX_1 0xE0
 #define MATRIX_2 0xE4
 void setBrightness(int);
-void sendDataD1(int);
-void sendDataD2(int);
+void sendData(int, int);
 void setupRegister(void);
 void setChipPins(void);
 void setupDisplay(void);
-void setLedsInRowD1(int, int);
-void clearDisplay1(void);
-void clearDisplay2(void);
-void setLedsInRowD2(int, int);
-void printImageD1(unsigned char*);
-void printImageD2(unsigned char*);
+void clearDisplay(int);
+void setLedsInRow(int, int, int);
+void printImage(int, unsigned char*);
 void playAnimationsOnEyes(Eyes*);
 void twi_init(void);
 void twi_start(void);
