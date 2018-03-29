@@ -12,7 +12,6 @@ typedef struct _Eyes {
 	int frames;
 	unsigned char images[][2][8];
 } Eyes;
-#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 void setBrightness(int);
 void sendDataD1(int);
 void sendDataD2(int);
@@ -781,6 +780,5 @@ Eyes sad = {
 		}
 	}
 };
-
 
 #endif /* MAIN_H_ */
