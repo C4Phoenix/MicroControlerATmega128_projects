@@ -161,6 +161,7 @@ void clearDisplay2(){
 
 
 //set brightness of leds of both dotmatrix displays (Datasheet page 17)
+//waarden van 0 t/m 15
 void setBrightness(int brightness){
 	sendDataD1((0b11100000+(brightness)));
 	sendDataD2((0b11100000+(brightness)));
