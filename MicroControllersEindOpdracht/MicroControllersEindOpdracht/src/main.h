@@ -2,7 +2,7 @@
  * main.h
  *
  * Created: 29-3-2018 09:30:52
- *  Author: Robin Hobbel
+ * Author: Robin Hobbel & Jacco Steegman
  */ 
 
 #ifndef MAIN_H_

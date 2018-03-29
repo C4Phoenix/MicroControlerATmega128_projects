@@ -1,3 +1,9 @@
+/*
+ * main.c
+ *
+ * Created: 14-3-2018 12:25:26
+ * Author: Robin Hobbel & Jacco Steegman
+ */ 
 #define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
