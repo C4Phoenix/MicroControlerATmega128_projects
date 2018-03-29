@@ -685,9 +685,9 @@ Eyes squint = {
 };
 #pragma endregion squint
 
-#pragma region animationPlaceholder
-Eyes animationPlaceholder = {
-	250,
+#pragma region sad
+Eyes sad = {
+	100,
 	2,
 	{//frames
 		{//frame 1
@@ -714,27 +714,90 @@ Eyes animationPlaceholder = {
 		{//frame 2
 			{//left eye
 				0B00000000,
-				0B01111000,
-				0B11111100,
-				0B11111100,
-				0B01111000,
 				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111100,
+				0B00111000,
 				0B00000000,
 				0B00000000
 				},{//right eye
 				0B00000000,
 				0B00000000,
+				0B00111000,
+				0B01111100,
+				0B01111110,
+				0B00111100,
 				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 3
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111100,
 				0B01111000,
-				0B11111100,
-				0B11111100,
+				0B00110000,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00110000,
 				0B01111000,
+				0B01111100,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 4
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111100,
+				0B01111000,
+				0B00110000,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00110000,
+				0B01111000,
+				0B01111100,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 5
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111100,
+				0B01111000,
+				0B00110000,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00110000,
+				0B01111000,
+				0B01111100,
+				0B00111100,
+				0B00000000,
 				0B00000000
 			}
 		}
 	}
 };
-#pragma endregion animationPlaceholder
+#pragma endregion sad
 
 #pragma region animationPlaceholder2
 Eyes animationPlaceholder2 = {
@@ -818,7 +881,7 @@ int main( void )
 				} else if(PINA & (1<<PA5)) {
 					playAnimationsOnEyes((&squint));
 				} else if(PINA & (1<<PA6)) {
-					playAnimationsOnEyes((&squint));
+					playAnimationsOnEyes((&sad));
 				} else if(PINA & (1<<PA7)) {
 					playAnimationsOnEyes((&squint));
 			}
