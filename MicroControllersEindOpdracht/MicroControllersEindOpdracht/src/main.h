@@ -32,7 +32,7 @@ void twi_stop(void);
 void twi_tx(unsigned char);
 void wait(int);
 void initButtons(void);
-#pragma region wink
+
 Eyes wink = {
 	100,
 	5,
@@ -144,9 +144,7 @@ Eyes wink = {
 		}
 	}
 };
-#pragma endregion wink
 
-#pragma region blink
 Eyes blink = {
 	100,
 	5,
@@ -258,9 +256,7 @@ Eyes blink = {
 		}
 	}
 };
-#pragma endregion blink
 
-#pragma region happy
 Eyes happy = {
 	100,
 	5,
@@ -372,9 +368,7 @@ Eyes happy = {
 		}
 	}
 };
-#pragma endregion happy
 
-#pragma region angry
 Eyes angry = {
 	100,
 	5,
@@ -486,9 +480,7 @@ Eyes angry = {
 		}
 	}
 };
-#pragma endregion angry
 
-#pragma region lookleft
 Eyes lookleft = {
 	150,
 	3,
@@ -558,9 +550,7 @@ Eyes lookleft = {
 		}
 	}
 };
-#pragma endregion lookleft
 
-#pragma region lookright
 Eyes lookright = {
 	150,
 	3,
@@ -630,9 +620,7 @@ Eyes lookright = {
 		}
 	}
 };
-#pragma endregion lookright
 
-#pragma region squint
 Eyes squint = {
 	250,
 	2,
@@ -681,9 +669,7 @@ Eyes squint = {
 		}
 	}
 };
-#pragma endregion squint
 
-#pragma region sad
 Eyes sad = {
 	100,
 	2,
@@ -795,6 +781,6 @@ Eyes sad = {
 		}
 	}
 };
-#pragma endregion sad
+
 
 #endif /* MAIN_H_ */
