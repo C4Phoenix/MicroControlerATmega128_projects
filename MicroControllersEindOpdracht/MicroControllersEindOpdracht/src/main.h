@@ -669,7 +669,7 @@ Eyes squint = {
 
 Eyes sad = {
 	100,
-	2,
+	5,
 	{//frames
 		{//frame 1
 			{//left eye
