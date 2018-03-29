@@ -858,10 +858,12 @@ void wait( int ms )
 	}
 }
 
+//initializes the a buttons as input
 void initButtons() {
 	DDRA = 0b00000000;
 }
 
+//playes an animation on the dotmatixdisplays
 void playAnimationsOnEyes(Eyes* eyes) {
 	for(int i = 0; i<eyes->frames; i++) {
 		printImageD1(eyes->images[i][0]);
@@ -875,6 +877,7 @@ void playAnimationsOnEyes(Eyes* eyes) {
 	}
 }
 
+//send data to dotmatix1 (left eye)
 void sendDataD1(int data){
 	twi_start();
 	twi_tx(0xE0);
@@ -882,6 +885,7 @@ void sendDataD1(int data){
 	twi_stop();
 }
 
+//send data to dotmatix2 (right eye)
 void sendDataD2(int data){
 	twi_start();
 	twi_tx(0xE4);
@@ -889,7 +893,7 @@ void sendDataD2(int data){
 	twi_stop();
 }
 
-
+//set leds on dotmatix1 (left eye)
 void setLedsInRowD1(int row, int data){
 		int newData = data >> 1;
 		twi_start();
@@ -899,6 +903,7 @@ void setLedsInRowD1(int row, int data){
 		twi_stop();
 }
 
+//set leds on dotmatix2 (right eye)
 void setLedsInRowD2(int row, int data){
 		int newData = data >> 1;
 		twi_start();
@@ -908,6 +913,7 @@ void setLedsInRowD2(int row, int data){
 		twi_stop();
 }
 
+//clear leds on dotmatix1 (left eye)
 void clearDisplay1(){
 	setLedsInRowD1(0x00,0);
 	setLedsInRowD1(0x02,0);
@@ -919,6 +925,7 @@ void clearDisplay1(){
 	setLedsInRowD1(0x0E,0);
 }
 
+//clear leds on dotmatix2 (right eye)
 void clearDisplay2(){
 	setLedsInRowD2(0x00,0);
 	setLedsInRowD2(0x02,0);
@@ -931,34 +938,38 @@ void clearDisplay2(){
 }
 
 
-//give a value from 
+//set brightness of leds of both dotmatrix displays
 void setBrightness(int brightness){
 	sendDataD1((0b11100000+(brightness)));
 	sendDataD2((0b11100000+(brightness)));
 }
 
+//sets the register of both dotmatrix displays
 void setupRegister(){
 	sendDataD1(0b00100001);
 	sendDataD2(0b00100001);
 }
 
+//sets the chip pins of both dotmatrix displays
 void setChipPins(){
 	sendDataD1(0b10100000);
 	sendDataD2(0b10100000);
 }
 
+//setup of both dotmatrix displays
 void setupDisplay(){
 	sendDataD1(0b10000001);
 	sendDataD2(0b10000001);
 }
 
-
+//print an image on dotmatrix1 (left eye)
 void printImageD1(unsigned char* img){
 	for(int row = 0; row <= 7; row++) {
 		setLedsInRowD1((row*2),img[row]);
 	}
 }
 
+//print an image on dotmatrix2 (right eye)
 void printImageD2(unsigned char* img){
 	for(int row = 0; row <= 7; row++) {
 		setLedsInRowD2((row*2),img[row]);
