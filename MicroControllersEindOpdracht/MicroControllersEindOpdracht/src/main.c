@@ -799,8 +799,8 @@ Eyes sad = {
 };
 #pragma endregion sad
 
-#pragma region animationPlaceholder2
-Eyes animationPlaceholder2 = {
+#pragma region eyeroll
+Eyes eyeroll = {
 	250,
 	2,
 	{//frames
@@ -848,7 +848,7 @@ Eyes animationPlaceholder2 = {
 		}
 	}
 };
-#pragma endregion animationPlaceholder2
+#pragma endregion eyeroll
 
 int main( void )
 {
@@ -883,7 +883,7 @@ int main( void )
 				} else if(PINA & (1<<PA6)) {
 					playAnimationsOnEyes((&sad));
 				} else if(PINA & (1<<PA7)) {
-					playAnimationsOnEyes((&squint));
+					playAnimationsOnEyes((&eyeroll));
 			}
 		}
 		wait(100);
