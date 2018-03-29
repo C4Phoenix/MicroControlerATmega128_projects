@@ -121,7 +121,7 @@ void playAnimationsOnEyes(Eyes* eyes) {
 //send data to dotmatix1 (left eye)
 void sendDataD1(int data){
 	twi_start();
-	twi_tx(0xE0);
+	twi_tx(MATRIX_1);
 	twi_tx(data);
 	twi_stop();
 }
@@ -129,7 +129,7 @@ void sendDataD1(int data){
 //send data to dotmatix2 (right eye)
 void sendDataD2(int data){
 	twi_start();
-	twi_tx(0xE4);
+	twi_tx(MATRIX_2);
 	twi_tx(data);
 	twi_stop();
 }
@@ -138,7 +138,7 @@ void sendDataD2(int data){
 void setLedsInRowD1(int row, int data){
 	int newData = data >> 1;
 	twi_start();
-	twi_tx(0xE0);	// Display I2C addres + R/W bit //1110 0000	
+	twi_tx(MATRIX_1);	// Display I2C addres + R/W bit //1110 0000	
 	twi_tx(row);	// Address
 	twi_tx(newData);	// data if
 	twi_stop();
@@ -148,7 +148,7 @@ void setLedsInRowD1(int row, int data){
 void setLedsInRowD2(int row, int data){
 	int newData = data >> 1;
 	twi_start();
-	twi_tx(0xE4);	// Display I2C addres + R/W bit //1110 0000
+	twi_tx(MATRIX_2);	// Display I2C addres + R/W bit //1110 0000
 	twi_tx(row);	// Address
 	twi_tx(newData);	// data
 	twi_stop();

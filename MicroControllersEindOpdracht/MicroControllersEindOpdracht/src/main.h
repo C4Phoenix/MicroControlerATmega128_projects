@@ -12,6 +12,8 @@ typedef struct _Eyes {
 	int frames;
 	unsigned char images[][2][8];
 } Eyes;
+#define MATRIX_1 0xE0
+#define MATRIX_2 0xE4
 void setBrightness(int);
 void sendDataD1(int);
 void sendDataD2(int);
