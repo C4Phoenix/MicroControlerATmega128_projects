@@ -118,22 +118,22 @@ void sendDataD2(int data){
 
 //set leds on dotmatix1 (left eye)
 void setLedsInRowD1(int row, int data){
-		int newData = data >> 1;
-		twi_start();
-		twi_tx(0xE0);	// Display I2C addres + R/W bit //1110 0000	
-		twi_tx(row);	// Address
-		twi_tx(newData);	// data if
-		twi_stop();
+	int newData = data >> 1;
+	twi_start();
+	twi_tx(0xE0);	// Display I2C addres + R/W bit //1110 0000	
+	twi_tx(row);	// Address
+	twi_tx(newData);	// data if
+	twi_stop();
 }
 
 //set leds on dotmatix2 (right eye)
 void setLedsInRowD2(int row, int data){
-		int newData = data >> 1;
-		twi_start();
-		twi_tx(0xE4);	// Display I2C addres + R/W bit //1110 0000
-		twi_tx(row);	// Address
-		twi_tx(newData);	// data
-		twi_stop();
+	int newData = data >> 1;
+	twi_start();
+	twi_tx(0xE4);	// Display I2C addres + R/W bit //1110 0000
+	twi_tx(row);	// Address
+	twi_tx(newData);	// data
+	twi_stop();
 }
 
 //clear leds on dotmatix1 (left eye)
