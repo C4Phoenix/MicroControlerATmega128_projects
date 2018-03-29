@@ -685,6 +685,59 @@ Eyes squint = {
 };
 #pragma endregion squint
 
+#pragma region finalAnimation
+Eyes finalAnimation = {
+	250,
+	2,
+	{//frames
+		{//frame 1
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 2
+			{//left eye
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000
+			}
+		}
+	}
+};
+#pragma endregion finalAnimation
+
+
+
 int main( void )
 {
 	int counter = 0;
