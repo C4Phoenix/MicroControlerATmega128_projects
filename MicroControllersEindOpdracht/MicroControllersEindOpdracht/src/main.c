@@ -40,7 +40,7 @@ int main( void )
 	clearDisplay2();
 
 	while(1){
-		if(counter%100==0) {//elke 10 seconde knippert hij
+		if(counter%100==0) {//Blink every 10 seconds
 			playAnimationsOnEyes(&blink);
 		} else {
 			if(PINA & (1<<PA0)) {
