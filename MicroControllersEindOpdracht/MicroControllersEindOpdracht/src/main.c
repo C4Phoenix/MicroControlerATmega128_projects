@@ -685,8 +685,8 @@ Eyes squint = {
 };
 #pragma endregion squint
 
-#pragma region finalAnimation
-Eyes finalAnimation = {
+#pragma region animationPlaceholder
+Eyes animationPlaceholder = {
 	250,
 	2,
 	{//frames
@@ -734,9 +734,58 @@ Eyes finalAnimation = {
 		}
 	}
 };
-#pragma endregion finalAnimation
+#pragma endregion animationPlaceholder
 
-
+#pragma region animationPlaceholder2
+Eyes animationPlaceholder2 = {
+	250,
+	2,
+	{//frames
+		{//frame 1
+			{//left eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00111100,
+				0B01111110,
+				0B01111110,
+				0B00111100,
+				0B00000000,
+				0B00000000
+			}
+		},
+		{//frame 2
+			{//left eye
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000,
+				0B00000000,
+				0B00000000
+				},{//right eye
+				0B00000000,
+				0B00000000,
+				0B00000000,
+				0B01111000,
+				0B11111100,
+				0B11111100,
+				0B01111000,
+				0B00000000
+			}
+		}
+	}
+};
+#pragma endregion animationPlaceholder2
 
 int main( void )
 {
@@ -766,9 +815,9 @@ int main( void )
 				} else if(PINA & (1<<PA5)) {
 					playAnimationsOnEyes((&squint));
 				} else if(PINA & (1<<PA6)) {
-
+					playAnimationsOnEyes((&squint));
 				} else if(PINA & (1<<PA7)) {
-
+					playAnimationsOnEyes((&squint));
 			}
 		}
 		wait(100);
