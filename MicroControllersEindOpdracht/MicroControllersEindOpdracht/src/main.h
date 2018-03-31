@@ -10,16 +10,8 @@
 
 #include "animations.h"
 #include "twi.h"
-#define MATRIX_1 0xE0
-#define MATRIX_2 0xE4
-void setBrightness(int);
-void sendData(int, int);
-void setupRegister(void);
-void setChipPins(void);
-void setupDisplay(void);
-void clearDisplay(int);
-void setLedsInRow(int, int, int);
-void printImage(int, unsigned char*);
+#include "dotmatrix.h"
+
 void playAnimationsOnEyes(Eyes*);
 void wait(int);
 void initButtons(void);

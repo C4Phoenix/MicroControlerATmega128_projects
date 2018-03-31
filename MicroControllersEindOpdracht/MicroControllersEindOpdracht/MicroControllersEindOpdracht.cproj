@@ -208,6 +208,12 @@
     <Compile Include="src\animations.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\dotmatrix.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\dotmatrix.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\main.h">
       <SubType>compile</SubType>
     </Compile>
