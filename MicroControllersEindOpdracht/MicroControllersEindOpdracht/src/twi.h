@@ -4,8 +4,6 @@
  * Created: 31-3-2018 10:58:00
  *  Author: robin
  */ 
-
-
 #ifndef TWI_H_
 #define TWI_H_
 

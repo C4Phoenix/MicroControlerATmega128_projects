@@ -4,6 +4,19 @@
  * Created: 31-3-2018 11:01:21
  *  Author: robin
  */ 
+//https://cdn-shop.adafruit.com/datasheets/ht16K33v110.pdf
+/*
+	Adresses & Bits of the 8x8 matrix
+	xxxx128-1-2-4-8-16-32-64
+	0x00
+	0x02
+	0x04
+	0x06
+	0x08
+	0x0A
+	0x0C
+	0x0E
+*/
 
 #include "dotmatrix.h"
 

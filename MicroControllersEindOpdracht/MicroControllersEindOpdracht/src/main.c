@@ -7,23 +7,7 @@
 #define F_CPU 8000000
 #include <avr/io.h>
 #include <util/delay.h>
-#include <avr/interrupt.h>
-#include <stdlib.h>
-#include <string.h>
 #include "main.h"
-//https://cdn-shop.adafruit.com/datasheets/ht16K33v110.pdf
-/*
-	Adresses & Bits of the 8x8 matrix
-	xxxx128-1-2-4-8-16-32-64
-	0x00
-	0x02
-	0x04
-	0x06
-	0x08
-	0x0A
-	0x0C
-	0x0E
-*/
 
 int main( void )
 {
