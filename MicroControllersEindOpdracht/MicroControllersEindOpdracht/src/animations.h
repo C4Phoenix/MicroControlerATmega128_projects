@@ -2,7 +2,7 @@
  * animations.h
  *
  * Created: 31-3-2018 10:56:11
- *  Author: robin
+ * Author: Robin Hobbel & Jacco Steegman
  */ 
 
 

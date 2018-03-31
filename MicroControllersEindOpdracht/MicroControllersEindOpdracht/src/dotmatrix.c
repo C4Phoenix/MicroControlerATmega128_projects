@@ -2,7 +2,7 @@
  * dotmatrix.c
  *
  * Created: 31-3-2018 11:01:21
- *  Author: robin
+ * Author: Robin Hobbel & Jacco Steegman
  */ 
 //https://cdn-shop.adafruit.com/datasheets/ht16K33v110.pdf
 /*

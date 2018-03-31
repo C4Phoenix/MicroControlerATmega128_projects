@@ -2,7 +2,7 @@
  * twi.h
  *
  * Created: 31-3-2018 10:58:00
- *  Author: robin
+ * Author: Robin Hobbel & Jacco Steegman
  */ 
 #ifndef TWI_H_
 #define TWI_H_

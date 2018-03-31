@@ -2,7 +2,7 @@
  * twi.c
  *
  * Created: 31-3-2018 10:57:50
- *  Author: robin
+ * Author: Robin Hobbel & Jacco Steegman
  */ 
 #include "twi.h"
 

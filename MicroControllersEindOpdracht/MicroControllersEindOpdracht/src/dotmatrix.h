@@ -2,7 +2,7 @@
  * dotmatrix.h
  *
  * Created: 31-3-2018 11:01:30
- *  Author: robin
+ * Author: Robin Hobbel & Jacco Steegman
  */ 
 
 

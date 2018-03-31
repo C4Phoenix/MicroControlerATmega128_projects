@@ -16,5 +16,4 @@ void playAnimationsOnEyes(Eyes*);
 void wait(int);
 void initButtons(void);
 
-
 #endif /* MAIN_H_ */
