@@ -9,6 +9,7 @@
 #define MAIN_H_
 
 #include "animations.h"
+#include "twi.h"
 #define MATRIX_1 0xE0
 #define MATRIX_2 0xE4
 void setBrightness(int);
@@ -20,10 +21,6 @@ void clearDisplay(int);
 void setLedsInRow(int, int, int);
 void printImage(int, unsigned char*);
 void playAnimationsOnEyes(Eyes*);
-void twi_init(void);
-void twi_start(void);
-void twi_stop(void);
-void twi_tx(unsigned char);
 void wait(int);
 void initButtons(void);
 
