@@ -41,14 +41,9 @@ void setLedsInRow(int matrixaddress, int row, int data) {
 
 //clear leds on dotmatix
 void clearDisplay(int matrixaddress){
-	setLedsInRow(matrixaddress,0x00,0);
-	setLedsInRow(matrixaddress,0x02,0);
-	setLedsInRow(matrixaddress,0x04,0);
-	setLedsInRow(matrixaddress,0x06,0);
-	setLedsInRow(matrixaddress,0x08,0);
-	setLedsInRow(matrixaddress,0x0A,0);
-	setLedsInRow(matrixaddress,0x0C,0);
-	setLedsInRow(matrixaddress,0x0E,0);
+	for(int row = 0; row <= 7; row++) {
+		setLedsInRow(matrixaddress,(row*2),0);
+	}
 }
 
 //set brightness of leds of both dotmatrix displays (Datasheet page 17)
