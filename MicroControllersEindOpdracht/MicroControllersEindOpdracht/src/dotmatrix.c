@@ -71,7 +71,7 @@ void setChipPins(){
 }
 
 //setup of both dotmatrix displays (Datasheet page 14)
-void setupDisplay(){
+void setDisplayOn(){
 	sendData(MATRIX_1,0b10000001);
 	sendData(MATRIX_2,0b10000001);
 }

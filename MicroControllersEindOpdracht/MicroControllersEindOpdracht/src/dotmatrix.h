@@ -17,7 +17,7 @@ void setBrightness(int);
 void sendData(int, int);
 void setupRegister(void);
 void setChipPins(void);
-void setupDisplay(void);
+void setDisplayOn(void);
 void clearDisplay(int);
 void setLedsInRow(int, int, int);
 void printImage(int, unsigned char*);

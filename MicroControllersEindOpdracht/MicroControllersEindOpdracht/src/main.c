@@ -20,7 +20,7 @@ int main( void )
 	initButtons();
 	setupRegister();
 	setChipPins();
-	setupDisplay();
+	setDisplayOn();
 	clearDisplay(MATRIX_1);
 	clearDisplay(MATRIX_2);
 
@@ -57,7 +57,11 @@ int main( void )
 			} else if(PINB & (1<<PB2)) {
 				setDisplayOff();
 			} else if(PINB & (1<<PB3)) {
-				setupDisplay();
+				setDisplayOn();
+			} else if(PINB & (1<<PB4)) {
+				PORTC = 0b11111111;
+			} else if(PINB & (1<<PB5)) {
+				PORTC = 0b00000000;
 			}
 		}
 		wait(100);
@@ -75,10 +79,11 @@ void wait( int ms )
 	}
 }
 
-//initializes the a & b buttons as input
+//initializes the a & b buttons as input & c as output
 void initButtons() {
 	DDRA = 0b00000000;
 	DDRB = 0b00000000;
+	DDRC = 0b11111111;
 }
 
 //playes an animation on the dotmatixdisplays
