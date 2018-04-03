@@ -13,6 +13,7 @@ int main( void )
 {
 	//initialize counter, for blinking
 	int counter = 0;
+	int brightness = 15;
 
 	//initializes all necessary components
 	twi_init();
@@ -43,6 +44,16 @@ int main( void )
 				playAnimationsOnEyes((&sad));
 			} else if(PINA & (1<<PA7)) {
 				playAnimationsOnEyes((&blink));
+			} else if(PINB & (1<<PB0)) {
+				if(brightness < 15) {
+					brightness++;
+					setBrightness(brightness);
+				}
+			} else if(PINB & (1<<PB1)) {
+				if(brightness > 0) {
+					brightness--;
+					setBrightness(brightness);
+				}
 			}
 		}
 		wait(100);
@@ -60,9 +71,10 @@ void wait( int ms )
 	}
 }
 
-//initializes the a buttons as input
+//initializes the a & b buttons as input
 void initButtons() {
 	DDRA = 0b00000000;
+	DDRB = 0b00000000;
 }
 
 //playes an animation on the dotmatixdisplays
