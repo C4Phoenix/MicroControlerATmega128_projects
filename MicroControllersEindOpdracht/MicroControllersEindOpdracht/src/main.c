@@ -54,6 +54,10 @@ int main( void )
 					brightness--;
 					setBrightness(brightness);
 				}
+			} else if(PINB & (1<<PB2)) {
+				setDisplayOff();
+			} else if(PINB & (1<<PB3)) {
+				setupDisplay();
 			}
 		}
 		wait(100);

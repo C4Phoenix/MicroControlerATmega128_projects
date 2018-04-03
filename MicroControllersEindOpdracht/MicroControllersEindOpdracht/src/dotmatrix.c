@@ -76,6 +76,12 @@ void setupDisplay(){
 	sendData(MATRIX_2,0b10000001);
 }
 
+//turns display off
+void setDisplayOff() {
+	sendData(MATRIX_1,0b10000000);
+	sendData(MATRIX_2,0b10000000);
+}
+
 //print an image on dotmatrix
 void printImage(int matrixaddress, unsigned char* img){
 	for(int row = 0; row <= 7; row++) {

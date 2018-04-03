@@ -21,5 +21,6 @@ void setupDisplay(void);
 void clearDisplay(int);
 void setLedsInRow(int, int, int);
 void printImage(int, unsigned char*);
+void setDisplayOff(void);
 
 #endif /* DOTMATRIX_H_ */
